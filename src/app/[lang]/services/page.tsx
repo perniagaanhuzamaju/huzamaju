@@ -1,11 +1,10 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { href, t, type Lang } from "@/lib/i18n";
 import { SERVICE_GROUPS } from "@/lib/catalog";
 import { pageMeta } from "@/lib/seo";
 import { getServices } from "@/lib/data/public";
-import { PageHero } from "@/components/site/ui";
+import { PageHero, Photo } from "@/components/site/ui";
 import { IconArrow } from "@/components/site/icons";
 
 export const dynamic = "force-dynamic";
@@ -57,9 +56,7 @@ export default async function Services({ params }: PageProps<"/[lang]/services">
                 {list.map((s) => (
                   <Link key={s.slug} href={href(lang, `/services/${s.slug}`)} className="group card flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-24px_rgba(0,0,0,.35)]">
                     {s.image && (
-                      <div className="relative aspect-[16/9] bg-line">
-                        <Image src={s.image} alt="" fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
-                      </div>
+                      <Photo src={s.image} alt="" lang={lang} actual={s.imageIsActual} className="aspect-[16/9] rounded-none" sizes="(max-width: 640px) 100vw, 33vw" />
                     )}
                     <div className="flex flex-1 flex-col p-5">
                       <h3 className="font-bold">{lang === "ms" ? s.titleMs : s.titleEn}</h3>

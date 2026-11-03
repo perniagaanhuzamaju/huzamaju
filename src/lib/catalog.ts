@@ -1,3 +1,4 @@
+import { STOCK, SERVICE_STOCK } from "./stock";
 /**
  * Static catalogue: quotation categories, service groups and the default
  * service catalogue (seeded into the database, then editable by admin).
@@ -231,25 +232,25 @@ export const SERVICE_GROUPS: { key: string; name: L; tagline: L; image: string }
     key: "building",
     name: { ms: "Pembinaan Bangunan & Renovation", en: "Building Construction & Renovation" },
     tagline: { ms: "Rumah, premis komersial dan pejabat, dari struktur hingga kemasan.", en: "Homes, commercial premises and offices, from structure to finishes." },
-    image: "/img/projek/r_2st2.jpg",
+    image: STOCK.modernHouse,
   },
   {
     key: "civil",
     name: { ms: "Kejuruteraan Awam & Infrastruktur", en: "Civil Engineering & Infrastructure" },
     tagline: { ms: "Jalan, saliran, kerja tanah dan struktur konkrit.", en: "Roads, drainage, earthworks and concrete structures." },
-    image: "/img/projek/proj_paver1.jpg",
+    image: STOCK.excavator,
   },
   {
     key: "facilities",
     name: { ms: "Pengurusan Fasiliti & Pembersihan", en: "Facilities Management & Cleaning" },
     tagline: { ms: "Penyelenggaraan berjadual, pembersihan dan baik pulih.", en: "Scheduled maintenance, cleaning and repairs." },
-    image: "/img/projek/proj_grass.jpg",
+    image: STOCK.maintenance,
   },
   {
     key: "ict",
     name: { ms: "Penyelesaian ICT & Teknologi", en: "ICT & Technology Solutions" },
     tagline: { ms: "CCTV, rangkaian dan bekalan peralatan ICT.", en: "CCTV, networking and ICT equipment supply." },
-    image: "/img/projek/r_class.jpg",
+    image: STOCK.server,
   },
 ];
 
@@ -274,7 +275,7 @@ const s = (
   scopeMs: string[],
   scopeEn: string[],
   image?: string,
-): Svc => ({ slug, group, quote, title: { ms, en }, summary: { ms: sumMs, en: sumEn }, scope: { ms: scopeMs, en: scopeEn }, image });
+): Svc => ({ slug, group, quote, title: { ms, en }, summary: { ms: sumMs, en: sumEn }, scope: { ms: scopeMs, en: scopeEn }, image: SERVICE_STOCK[slug] ?? image });
 
 const P = (f: string) => `/img/projek/${f}.jpg`;
 
@@ -564,7 +565,7 @@ export const SOLUTIONS: { slug: string; title: L; lead: L; points: { ms: string[
     },
     groups: ["building"],
     quote: "house_renovation",
-    image: "/img/projek/r_ext.jpg",
+    image: STOCK.kitchen,
   },
   {
     slug: "korporat",
@@ -576,7 +577,7 @@ export const SOLUTIONS: { slug: string; title: L; lead: L; points: { ms: string[
     },
     groups: ["building", "civil", "facilities"],
     quote: "commercial_renovation",
-    image: "/img/projek/r_store1.jpg",
+    image: STOCK.office,
   },
   {
     slug: "sivil-infrastruktur",
@@ -588,7 +589,7 @@ export const SOLUTIONS: { slug: string; title: L; lead: L; points: { ms: string[
     },
     groups: ["civil"],
     quote: "road_works",
-    image: "/img/projek/proj_paver1.jpg",
+    image: STOCK.aerialSite,
   },
   {
     slug: "penyelenggaraan-fasiliti",
@@ -600,7 +601,7 @@ export const SOLUTIONS: { slug: string; title: L; lead: L; points: { ms: string[
     },
     groups: ["facilities"],
     quote: "maintenance",
-    image: "/img/projek/r_class.jpg",
+    image: STOCK.inspection,
   },
   {
     slug: "pembersihan",
@@ -612,7 +613,7 @@ export const SOLUTIONS: { slug: string; title: L; lead: L; points: { ms: string[
     },
     groups: ["facilities"],
     quote: "cleaning",
-    image: "/img/projek/proj_grass.jpg",
+    image: STOCK.vacuumOffice,
   },
   {
     slug: "ict",
@@ -624,7 +625,7 @@ export const SOLUTIONS: { slug: string; title: L; lead: L; points: { ms: string[
     },
     groups: ["ict"],
     quote: "ict",
-    image: "/img/projek/r_office.jpg",
+    image: STOCK.dataCenter,
   },
 ];
 

@@ -1,3 +1,4 @@
+import { STOCK } from "@/lib/stock";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { href, t, type Lang } from "@/lib/i18n";
@@ -42,7 +43,7 @@ export default async function Capabilities({ params }: PageProps<"/[lang]/capabi
   return (
     <>
       <PageHero lang={lang} eyebrow={d.nav.capabilities} title={ms ? "Keupayaan yang boleh disahkan." : "Capabilities you can verify."}
-        lead={ms ? "Semua pendaftaran di bawah adalah daripada sijil asal syarikat. Salinan sijil disertakan bersama sebut harga rasmi atau dokumen tender." : "Every registration below is from the company's original certificates. Copies are provided with formal quotations and tender documents."} image="/img/projek/m_exc1.jpg" />
+        lead={ms ? "Semua pendaftaran di bawah adalah daripada sijil asal syarikat. Salinan sijil disertakan bersama sebut harga rasmi atau dokumen tender." : "Every registration below is from the company's original certificates. Copies are provided with formal quotations and tender documents."} image={STOCK.engineer} actual={false} />
       <Section>
         <Heading eyebrow={ms ? "Gred CIDB" : "CIDB Grades"} title={ms ? "Berdaftar untuk tiga kategori kerja." : "Registered for three work categories."} />
         <div className="mt-10 grid gap-4 md:grid-cols-3">

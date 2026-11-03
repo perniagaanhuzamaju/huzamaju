@@ -1,3 +1,4 @@
+import { STOCK } from "@/lib/stock";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { href, t, type Lang } from "@/lib/i18n";
@@ -57,7 +58,7 @@ export default async function About({ params }: PageProps<"/[lang]/about">) {
 
   return (
     <>
-      <PageHero lang={lang} eyebrow={d.nav.about} title={ms ? "Membina dengan amanah, menyiapkan dengan kualiti." : "Building with integrity, delivering with quality."} lead={c("about_intro")} image="/img/projek/r_2st3.jpg" />
+      <PageHero lang={lang} eyebrow={d.nav.about} title={ms ? "Membina dengan amanah, menyiapkan dengan kualiti." : "Building with integrity, delivering with quality."} lead={c("about_intro")} image={STOCK.blueprint2} actual={false} />
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-2">

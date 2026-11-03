@@ -13,6 +13,7 @@ import * as t from "../src/db/schema";
 import { PERMISSIONS, ROLES } from "../src/lib/auth/permissions";
 import { hashPassword, passwordProblem } from "../src/lib/auth/password";
 import { DEFAULT_SERVICES, QUOTE_CATEGORIES } from "../src/lib/catalog";
+import { isStockImage } from "../src/lib/stock";
 import pricing from "../src/db/seed-data/pricing-2026.json";
 
 const UNIT_MAP: Record<string, string> = { kps: "ft2", ka: "ft", titik: "point", bilik: "unit", lokasi: "lot", unit: "unit", lot: "lot", set: "set", trip: "trip" };
@@ -68,7 +69,7 @@ async function services() {
         scopeMs: s.scope.ms,
         scopeEn: s.scope.en,
         image: s.image ?? null,
-        imageIsActual: true,
+        imageIsActual: !isStockImage(s.image),
         sort: sort++,
       })
       .onConflictDoNothing();

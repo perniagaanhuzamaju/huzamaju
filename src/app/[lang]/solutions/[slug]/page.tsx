@@ -31,7 +31,7 @@ export default async function Solution({ params }: PageProps<"/[lang]/solutions/
   const services = (await getServices()).filter((x) => s.groups.includes(x.groupKey));
   return (
     <>
-      <PageHero lang={lang} eyebrow={ms ? "Penyelesaian" : "Solutions"} title={s.title[lang]} lead={s.lead[lang]} image={s.image} />
+      <PageHero lang={lang} eyebrow={ms ? "Penyelesaian" : "Solutions"} title={s.title[lang]} lead={s.lead[lang]} image={s.image} actual={false} />
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr]">
           <div>

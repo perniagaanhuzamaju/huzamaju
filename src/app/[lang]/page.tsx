@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { href, t, type Lang } from "@/lib/i18n";
 import { COMPANY } from "@/lib/company";
@@ -9,6 +8,7 @@ import { getContent, getPortfolio, getServices, getTestimonials } from "@/lib/da
 import { Section, Heading, Photo, ArrowLink } from "@/components/site/ui";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { HeroVisual } from "@/components/site/HeroVisual";
+import { STOCK } from "@/lib/stock";
 import {
   IconArrow, IconBuilding, IconRoad, IconBroom, IconChip, IconShield, IconClock, IconDoc, IconUsers, IconTruck, IconSpark, IconCheck, IconPhone, IconMail, IconPin, IconWhatsApp,
 } from "@/components/site/icons";
@@ -127,7 +127,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       {/* 2. Company introduction */}
       <Section>
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          <Photo src="/img/projek/r_store1.jpg" alt={ms ? "Stor baja FELCRA siap dicat" : "Completed FELCRA store"} lang={lang} className="aspect-[4/3.2]" />
+          <Photo src={STOCK.teamSite} alt={ms ? "Pasukan kerja di tapak binaan" : "Site team at a construction site"} lang={lang} actual={false} className="aspect-[4/3.2]" />
           <div>
             <Heading eyebrow={d.home.introEyebrow} title={d.home.introTitle} />
             <p className="mt-5 text-[17px] leading-relaxed text-mute">{c("about_intro")}</p>
@@ -168,9 +168,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             const list = services.filter((s) => s.groupKey === g.key);
             return (
               <Link key={g.key} href={href(lang, `/services#${g.key}`)} className="group card grid overflow-hidden sm:grid-cols-[200px_1fr]">
-                <div className="ph relative min-h-[180px] bg-ink">
-                  <Image src={g.image} alt="" fill sizes="(max-width: 640px) 100vw, 200px" className="object-cover" />
-                </div>
+                <Photo src={g.image} alt="" lang={lang} actual={false} className="min-h-[180px] rounded-none" sizes="(max-width: 640px) 100vw, 200px" />
                 <div className="p-6">
                   <Icon className="text-gold-strong" />
                   <h3 className="mt-3 text-xl font-bold">{g.name[lang]}</h3>
