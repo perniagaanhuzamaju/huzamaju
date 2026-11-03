@@ -227,3 +227,14 @@ body {
   transform: scale(1.05);
   filter: saturate(1) contrast(1.05) brightness(1);
 }
+
+/* ---------- Branded project cover ---------- */
+.pc-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(circle at 50% 50%, #000 20%, transparent 75%);
+}
+.pc-ring { transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.group:hover .pc-ring { transform: scale(1.06); }

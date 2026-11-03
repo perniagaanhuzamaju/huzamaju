@@ -2,7 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { href, t, type Lang } from "@/lib/i18n";
 import { COMPANY } from "@/lib/company";
-import { SERVICE_GROUPS } from "@/lib/catalog";
+import { PROJECT_CATEGORIES, SERVICE_GROUPS } from "@/lib/catalog";
+import { ProjectCover } from "@/components/site/ProjectCover";
 import { pageMeta } from "@/lib/seo";
 import { getContent, getPortfolio, getServices, getTestimonials } from "@/lib/data/public";
 import { Section, Heading, Photo, ArrowLink } from "@/components/site/ui";
@@ -35,7 +36,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const d = t(lang);
   const ms = lang === "ms";
   const [c, services, portfolio, testimonials] = await Promise.all([getContent(lang), getServices(), getPortfolio(), getTestimonials()]);
-  const featured = portfolio.filter((p) => p.featured && p.coverImage).slice(0, 6);
+  const featured = portfolio.filter((p) => p.featured).slice(0, 6);
   const stats = [
     ["stat_years", "stat_years_label"],
     ["stat_projects", "stat_projects_label"],
@@ -224,7 +225,11 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((p) => (
             <Link key={p.id} href={href(lang, `/projects/${p.slug}`)} className="group card overflow-hidden">
-              <Photo src={p.coverImage!} alt={lang === "ms" ? p.titleMs : p.titleEn} lang={lang} className="aspect-[4/3] rounded-none" sizes="(max-width: 640px) 100vw, 33vw" />
+              {p.coverImage ? (
+                <Photo src={p.coverImage} alt={lang === "ms" ? p.titleMs : p.titleEn} lang={lang} className="aspect-[4/3] rounded-none" sizes="(max-width: 640px) 100vw, 33vw" />
+              ) : (
+                <ProjectCover categoryKey={p.category} category={PROJECT_CATEGORIES.find((c) => c.key === p.category)?.name[lang]} className="aspect-[4/3]" />
+              )}
               <div className="p-5">
                 <p className="text-xs font-bold uppercase tracking-wider text-gold-strong">{p.clientPublic && p.clientName ? p.clientName : p.role}</p>
                 <h3 className="mt-2 font-bold leading-snug group-hover:underline">{lang === "ms" ? p.titleMs : p.titleEn}</h3>

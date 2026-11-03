@@ -6,6 +6,7 @@ import { SERVICE_GROUPS, quoteCategory } from "@/lib/catalog";
 import { pageMeta, SITE_URL } from "@/lib/seo";
 import { waLink, COMPANY } from "@/lib/company";
 import { getPortfolio, getService, getServices } from "@/lib/data/public";
+import { ProjectCover } from "@/components/site/ProjectCover";
 import { PageHero, Section, Photo } from "@/components/site/ui";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { IconCheck, IconSpark, IconWhatsApp } from "@/components/site/icons";
@@ -78,8 +79,14 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
                 <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   {examples.map((p) => (
                     <Link key={p.id} href={href(lang, `/projects/${p.slug}`)} className="card overflow-hidden hover:border-ink">
-                      {p.coverImage && <Photo src={p.coverImage} alt={ms ? p.titleMs : p.titleEn} lang={lang} className="aspect-[16/10] rounded-none" sizes="(max-width: 640px) 100vw, 30vw" />}
-                      <p className="p-4 text-[15px] font-semibold leading-snug">{ms ? p.titleMs : p.titleEn}</p>
+                      {p.coverImage ? (
+                        <>
+                          <Photo src={p.coverImage} alt={ms ? p.titleMs : p.titleEn} lang={lang} className="aspect-[16/10] rounded-none" sizes="(max-width: 640px) 100vw, 30vw" />
+                          <p className="p-4 text-[15px] font-semibold leading-snug">{ms ? p.titleMs : p.titleEn}</p>
+                        </>
+                      ) : (
+                        <ProjectCover title={ms ? p.titleMs : p.titleEn} categoryKey={p.category} location={p.location} className="aspect-[16/10]" />
+                      )}
                     </Link>
                   ))}
                 </div>

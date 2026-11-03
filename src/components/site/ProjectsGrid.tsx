@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { href, t, type Lang } from "@/lib/i18n";
+import { ProjectCover } from "./ProjectCover";
 
 type P = { id: number; slug: string; title: string; category: string; client: string | null; location: string | null; cover: string | null; role: string | null };
 
@@ -31,7 +32,7 @@ export function ProjectsGrid({ lang, projects, categories }: { lang: Lang; proje
                   <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-semibold text-white">{d.labels.actualPhoto}</span>
                 </>
               ) : (
-                <div className="grid h-full place-items-center p-6 text-center text-sm font-semibold text-mute">{lang === "ms" ? "Gambar akan ditambah" : "Photos to be added"}</div>
+                <ProjectCover categoryKey={p.category} category={categories.find((c) => c.key === p.category)?.name} className="h-full" />
               )}
             </div>
             <div className="flex flex-1 flex-col p-5">
