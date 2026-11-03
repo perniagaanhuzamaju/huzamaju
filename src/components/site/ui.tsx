@@ -42,7 +42,7 @@ export function PageHero({ eyebrow, title, lead, image, lang, actual = true }: {
 export function Photo({ src, alt, lang, actual = true, className = "", priority, sizes = "(max-width: 768px) 100vw, 50vw" }: { src: string; alt: string; lang: Lang; actual?: boolean; className?: string; priority?: boolean; sizes?: string }) {
   const d = t(lang);
   return (
-    <figure className={`relative overflow-hidden rounded-xl2 bg-line ${className}`}>
+    <figure className={`ph relative overflow-hidden rounded-xl2 bg-ink ${className}`}>
       <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" priority={priority} />
       <figcaption className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur">
         <IconCamera width={13} height={13} />

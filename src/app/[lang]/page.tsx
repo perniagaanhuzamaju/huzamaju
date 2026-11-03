@@ -8,6 +8,7 @@ import { pageMeta } from "@/lib/seo";
 import { getContent, getPortfolio, getServices, getTestimonials } from "@/lib/data/public";
 import { Section, Heading, Photo, ArrowLink } from "@/components/site/ui";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
+import { HeroVisual } from "@/components/site/HeroVisual";
 import {
   IconArrow, IconBuilding, IconRoad, IconBroom, IconChip, IconShield, IconClock, IconDoc, IconUsers, IconTruck, IconSpark, IconCheck, IconPhone, IconMail, IconPin, IconWhatsApp,
 } from "@/components/site/icons";
@@ -71,52 +72,52 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   return (
     <>
       {/* 1. Hero */}
-      <section className="relative overflow-hidden bg-white">
-        <div className="wrap grid items-center gap-12 pt-10 pb-16 md:pt-16 md:pb-24 lg:grid-cols-[1.05fr_1fr]">
+      <section className="hero-dark relative overflow-hidden text-white">
+        <div className="wrap relative z-10 grid items-center gap-10 pt-12 pb-16 md:pt-20 md:pb-24 lg:grid-cols-[1.05fr_1fr]">
           <div className="rise">
-            <span className="eyebrow">{d.hero.eyebrow}</span>
-            <h1 className="mt-5 text-[40px] leading-[1.04] font-extrabold tracking-[-0.025em] md:text-[64px]">
-              Building Solutions.<br /><span className="text-gold-strong">Creating Opportunities.</span>
+            <span className="flex items-start gap-2.5 text-[11.5px] leading-relaxed font-bold tracking-[0.12em] text-amber uppercase md:text-[12px]">
+              <span className="mt-[7px] h-1.5 w-6 shrink-0 rounded-full bg-amber" /> {d.hero.eyebrow}
+            </span>
+            <h1 className="mt-6 text-[40px] leading-[1.03] font-extrabold tracking-[-0.03em] md:text-[66px]">
+              Building Solutions.<br /><span className="text-gradient-gold">Creating Opportunities.</span>
             </h1>
-            {ms && <p className="mt-3 text-[15px] font-semibold text-ink-2">Membina Penyelesaian. Mencipta Peluang.</p>}
-            <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-mute md:text-lg">{d.hero.text}</p>
+            {ms && <p className="mt-3 text-[15px] font-semibold text-white/70">Membina Penyelesaian. Mencipta Peluang.</p>}
+            <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-white/65 md:text-lg">{d.hero.text}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href={href(lang, "/services")} className="btn-dark">
-                {d.cta.explore} <IconArrow />
-              </Link>
-              <Link href={href(lang, "/quotation")} className="btn-gold">
+              <Link href={href(lang, "/quotation")} className="btn-gold shadow-[0_0_40px_rgba(242,183,5,0.35)]">
                 <IconSpark /> {d.cta.getInstant}
               </Link>
+              <Link href={href(lang, "/services")} className="btn border border-white/20 bg-white/5 text-white backdrop-blur hover:bg-white/10">
+                {d.cta.explore} <IconArrow />
+              </Link>
             </div>
-            <dl className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+            <dl className="mt-10 grid max-w-md grid-cols-3 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] text-sm backdrop-blur">
               {[
                 ["CIDB", COMPANY.cidbGrades],
                 [ms ? "Taraf" : "Status", "Bumiputera"],
                 [ms ? "Sejak" : "Since", "2018"],
               ].map(([k, v]) => (
-                <div key={k} className="flex items-baseline gap-2">
-                  <dt className="text-mute">{k}</dt>
-                  <dd className="font-bold">{v}</dd>
+                <div key={k} className="border-r border-white/10 px-4 py-3 last:border-r-0">
+                  <dt className="text-[11px] font-semibold tracking-wider text-white/45 uppercase">{k}</dt>
+                  <dd className="mt-0.5 font-bold text-white">{v}</dd>
                 </div>
               ))}
             </dl>
           </div>
-          <div className="relative grid grid-cols-5 grid-rows-6 gap-3 rise" style={{ height: "min(560px, 70vw)" }}>
-            <Photo src="/img/projek/r_2st2.jpg" alt={ms ? "Struktur bangunan dua tingkat" : "Two-storey building structure"} lang={lang} className="col-span-3 row-span-6" priority sizes="(max-width: 1024px) 60vw, 30vw" />
-            <Photo src="/img/projek/proj_paver1.jpg" alt={ms ? "Kerja turapan premix" : "Premix paving"} lang={lang} className="col-span-2 row-span-3" sizes="(max-width: 1024px) 40vw, 20vw" />
-            <Photo src="/img/projek/r_kitchen2.jpg" alt={ms ? "Kabinet dapur siap" : "Completed kitchen"} lang={lang} className="col-span-2 row-span-3" sizes="(max-width: 1024px) 40vw, 20vw" />
+          <div className="rise">
+            <HeroVisual lang={lang} />
           </div>
         </div>
       </section>
 
       {/* stats */}
       {stats.length > 0 && (
-        <div className="border-y border-line bg-sand">
+        <div className="border-y border-white/10 bg-[#0b0d10] text-white">
           <div className="wrap grid grid-cols-2 md:grid-cols-4">
             {stats.map(([v, l], i) => (
-              <div key={i} className={`px-2 py-8 md:px-6 ${i % 2 ? "" : "border-r"} md:border-r border-line last:border-r-0`}>
-                <p className="text-[34px] leading-none font-extrabold tracking-tight md:text-[44px]">{v}</p>
-                <p className="mt-2 text-sm font-medium text-mute">{l}</p>
+              <div key={i} className={`px-2 py-8 md:px-6 ${i % 2 ? "" : "border-r"} md:border-r border-white/10 last:border-r-0`}>
+                <p className="text-gradient-gold text-[34px] leading-none font-extrabold tracking-tight md:text-[44px]">{v}</p>
+                <p className="mt-2 text-sm font-medium text-white/55">{l}</p>
               </div>
             ))}
           </div>
@@ -167,8 +168,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             const list = services.filter((s) => s.groupKey === g.key);
             return (
               <Link key={g.key} href={href(lang, `/services#${g.key}`)} className="group card grid overflow-hidden sm:grid-cols-[200px_1fr]">
-                <div className="relative min-h-[180px] bg-line">
-                  <Image src={g.image} alt="" fill sizes="(max-width: 640px) 100vw, 200px" className="object-cover transition duration-500 group-hover:scale-105" />
+                <div className="ph relative min-h-[180px] bg-ink">
+                  <Image src={g.image} alt="" fill sizes="(max-width: 640px) 100vw, 200px" className="object-cover" />
                 </div>
                 <div className="p-6">
                   <Icon className="text-gold-strong" />
