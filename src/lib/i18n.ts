@@ -67,6 +67,7 @@ const ms = {
   labels: {
     actualPhoto: "Gambar projek sebenar HUZA MAJU",
     illustrativePhoto: "Gambar ilustrasi",
+    stockNote: "Gambar projek sebenar dilabel di laman. Gambar lain di laman ini ialah gambar stok untuk hiasan.",
     scope: "Skop kerja",
     client: "Pelanggan",
     location: "Lokasi",
@@ -151,6 +152,7 @@ const en: Dict = {
   labels: {
     actualPhoto: "Actual HUZA MAJU project photo",
     illustrativePhoto: "Illustrative photo",
+    stockNote: "Actual project photos are labelled on the site. Other images on this site are stock photos used for illustration.",
     scope: "Scope of work",
     client: "Client",
     location: "Location",

@@ -73,6 +73,7 @@ export function Footer({ lang }: { lang: Lang }) {
             <span>© {new Date().getFullYear()} {COMPANY.shortName}</span>
           </p>
         </div>
+        <p className="wrap pb-6 text-[11.5px] text-white/35">{d.labels.stockNote}</p>
       </div>
     </footer>
   );

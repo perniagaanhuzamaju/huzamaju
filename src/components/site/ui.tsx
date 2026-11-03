@@ -38,16 +38,19 @@ export function PageHero({ eyebrow, title, lead, image, lang, actual = true }: {
   );
 }
 
-/** Every photo carries a label so actual project photos are never confused with illustrative ones. */
+/** Real project photos are labelled so they are never confused with stock photos. */
 export function Photo({ src, alt, lang, actual = true, className = "", priority, sizes = "(max-width: 768px) 100vw, 50vw" }: { src: string; alt: string; lang: Lang; actual?: boolean; className?: string; priority?: boolean; sizes?: string }) {
   const d = t(lang);
   return (
     <figure className={`ph relative overflow-hidden rounded-xl2 bg-ink ${className}`}>
       <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" priority={priority} />
-      <figcaption className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur">
-        <IconCamera width={13} height={13} />
-        {actual ? d.labels.actualPhoto : d.labels.illustrativePhoto}
-      </figcaption>
+      {/* Only real project photos carry a caption; stock photos are disclosed once in the footer. */}
+      {actual && (
+        <figcaption className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur">
+          <IconCamera width={13} height={13} />
+          {d.labels.actualPhoto}
+        </figcaption>
+      )}
     </figure>
   );
 }
