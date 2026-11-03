@@ -15,6 +15,8 @@ const RULES: Record<string, (v: string) => boolean> = {
   max_tokens: (v) => v === "" || (Number(v) >= 1024 && Number(v) <= 64000),
   daily_limit: (v) => v === "" || (Number(v) >= 0 && Number(v) <= 100000),
   per_ip_hourly: (v) => v === "" || (Number(v) >= 1 && Number(v) <= 1000),
+  per_ip_daily: (v) => v === "" || (Number(v) >= 0 && Number(v) <= 1000),
+  per_phone_daily: (v) => v === "" || (Number(v) >= 0 && Number(v) <= 1000),
   max_attachments: (v) => v === "" || (Number(v) >= 0 && Number(v) <= 10),
   extra_instructions: (v) => v.length <= 4000,
 };

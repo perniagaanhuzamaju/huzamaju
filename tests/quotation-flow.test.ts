@@ -49,6 +49,33 @@ const { eq } = await import("drizzle-orm");
 const created: number[] = [];
 
 describe("AI quotation flow", () => {
+  const brief = { lang: "ms" as const, category: "Kerja Cat", work: "Cat dalaman", segment: "residential" as const, location: "Kluang", projectType: "", buildingType: "", measurements: "3 bilik 12x10", quantity: "", materialPreference: "", specifications: "", siteConditions: "", timeline: "", remarks: "", answers: [] };
+
+  it("caps AI estimates per phone number per day, then falls back to manual QS", async () => {
+    const ctx = await loadPricingContext("painting", "residential", "Kluang, Johor");
+    const phoneHash = `phone-${Date.now()}`;
+    const call = (i: number) => runEstimator({ brief, candidates: ctx.candidates, attachments: [], ipHash: `ip-${Date.now()}-${i}`, phoneHash, userId: null });
+    await call(1);
+    await call(2);
+    await expect(call(3)).rejects.toMatchObject({ reason: "contact_limit" });
+  });
+
+  it("caps AI estimates per network per day", async () => {
+    const ctx = await loadPricingContext("painting", "residential", "Kluang, Johor");
+    const ipHash = `ipday-${Date.now()}`;
+    const call = (i: number) => runEstimator({ brief, candidates: ctx.candidates, attachments: [], ipHash, phoneHash: `p-${Date.now()}-${i}`, userId: null });
+    for (let i = 0; i < 3; i++) await call(i);
+    await expect(call(9)).rejects.toMatchObject({ reason: "contact_limit" });
+  });
+
+  it("requires a valid Malaysian phone number before analysis", async () => {
+    const { BriefInput } = await import("@/lib/quotation/brief");
+    const base = { categoryKey: "painting", work: "Cat dalaman", location: "Kluang", customerName: "Ali" };
+    expect(BriefInput.safeParse({ ...base, customerPhone: "017-871 7848" }).success).toBe(true);
+    expect(BriefInput.safeParse({ ...base, customerPhone: "123" }).success).toBe(false);
+    expect(BriefInput.safeParse({ ...base, customerName: "", customerPhone: "0178717848" }).success).toBe(false);
+  });
+
   it("prices only database codes and flags the rest for QS", async () => {
     const ctx = await loadPricingContext("painting", "residential", "Kluang, Johor");
     expect(ctx.candidates.some((c) => c.code === "D-001")).toBe(true);

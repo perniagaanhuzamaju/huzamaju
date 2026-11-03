@@ -42,6 +42,8 @@ export default async function AdminAi() {
           <div><label className="label">Token maksimum</label><input name="max_tokens" type="number" defaultValue={cfg.maxTokens} className="field" /></div>
           <div><label className="label">Had harian (semua pengguna)</label><input name="daily_limit" type="number" defaultValue={cfg.dailyLimit} className="field" /></div>
           <div><label className="label">Had sejam setiap IP</label><input name="per_ip_hourly" type="number" defaultValue={cfg.perIpHourly} className="field" /></div>
+          <div><label className="label">Had sehari setiap IP</label><input name="per_ip_daily" type="number" defaultValue={cfg.perIpDaily} className="field" /><p className="mt-1 text-xs text-mute">0 = tiada had</p></div>
+          <div><label className="label">Had sehari setiap no. telefon</label><input name="per_phone_daily" type="number" defaultValue={cfg.perPhoneDaily} className="field" /><p className="mt-1 text-xs text-mute">0 = tiada had</p></div>
           <div><label className="label">Lampiran maksimum dihantar</label><input name="max_attachments" type="number" defaultValue={cfg.maxAttachments} className="field" /></div>
           <label className="flex items-center gap-2 text-sm md:col-span-3"><input type="checkbox" name="send_attachments" defaultChecked={cfg.sendAttachments} /> Hantar gambar/lukisan pelanggan kepada AI (data GPS dibuang dahulu)</label>
           <div className="md:col-span-3"><label className="label">Arahan tambahan QS (dihantar bersama setiap analisis)</label><textarea name="extra_instructions" rows={3} defaultValue={cfg.extraInstructions} className="field" placeholder="cth: Untuk bilik air, sentiasa masukkan kalis air (waterproofing)." /></div>

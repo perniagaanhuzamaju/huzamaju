@@ -5,7 +5,9 @@ import { projectDocuments } from "@/db/schema";
 import { handle, HttpError } from "@/lib/api";
 import { quoteCategory } from "@/lib/catalog";
 import { clientIp } from "@/lib/security/request";
-import { hashIp } from "@/lib/security/crypto";
+import { hashIp, sha256 } from "@/lib/security/crypto";
+import { normalizePhone } from "@/lib/phone";
+import { env } from "@/lib/env";
 import { rateLimit, RateLimitError } from "@/lib/security/rate-limit";
 import { verifyHuman } from "@/lib/security/turnstile";
 import { currentUser } from "@/lib/auth/session";
@@ -57,6 +59,7 @@ export const POST = handle(async (req: Request) => {
     categoryKey: cat.key,
     work: b.work,
     customerName: b.customerName,
+    customerPhone: b.customerPhone,
     location: b.location,
     projectType: b.projectType,
     buildingType: b.buildingType,
@@ -80,6 +83,7 @@ export const POST = handle(async (req: Request) => {
       candidates: ctx.candidates,
       attachments: await toAttachments(docs),
       ipHash,
+      phoneHash: sha256(`${env().SESSION_SECRET}:phone:${normalizePhone(b.customerPhone)}`).slice(0, 32),
       userId: user?.id ?? null,
     });
     estimate = r.estimate;

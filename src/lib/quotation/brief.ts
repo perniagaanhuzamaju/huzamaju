@@ -1,13 +1,15 @@
 import { z } from "zod";
+import { isValidMyPhone } from "@/lib/phone";
 
 const s = (max: number) => z.string().trim().max(max).optional().default("");
 
-/** Wizard step 1-3 fields. Customer name is kept for the record but never sent to the AI provider. */
+/** Wizard step 1-3 fields. Customer name and phone are kept for the record but never sent to the AI provider. */
 export const BriefInput = z.object({
   lang: z.enum(["ms", "en"]).default("ms"),
   categoryKey: z.string().trim().min(2).max(40),
   work: z.string().trim().min(2).max(200),
-  customerName: s(160),
+  customerName: z.string().trim().min(2).max(160),
+  customerPhone: z.string().trim().max(30).refine(isValidMyPhone, "No. telefon tidak sah"),
   location: z.string().trim().min(2).max(200),
   projectType: s(120),
   buildingType: s(120),

@@ -131,7 +131,7 @@ async function post(url: string, body?: unknown) {
   return j;
 }
 
-export function QuotationResult({ initial, showSteps = true }: { initial: PublicQuotation; showSteps?: boolean }) {
+export function QuotationResult({ initial, showSteps = true, prefill }: { initial: PublicQuotation; showSteps?: boolean; prefill?: { name: string; phone: string } }) {
   const [q, setQ] = useState(initial);
   const lang = q.lang;
   const w = W[lang];
@@ -368,9 +368,9 @@ export function QuotationResult({ initial, showSteps = true }: { initial: Public
             {showSteps && <h3 className="text-lg font-bold">{w.contactTitle}</h3>}
             <p className="mt-1 text-sm text-mute">{w.contactLead}</p>
           </div>
-          <Field id="c-name" name="fullName" label={w.name} required auto="name" />
+          <Field id="c-name" name="fullName" label={w.name} required auto="name" defaultValue={prefill?.name} />
           <Field id="c-company" name="companyName" label={w.company} auto="organization" />
-          <Field id="c-phone" name="phone" label={w.phone} required auto="tel" placeholder="01X-XXX XXXX" />
+          <Field id="c-phone" name="phone" label={w.phone} required auto="tel" placeholder="01X-XXX XXXX" defaultValue={prefill?.phone} />
           <Field id="c-email" name="email" label={w.email} type="email" auto="email" />
           <div className="md:col-span-2">
             <Field id="c-address" name="projectAddress" label={w.address} auto="street-address" />
@@ -511,13 +511,13 @@ function Done({ text }: { text: string }) {
   );
 }
 
-function Field({ id, name, label, type = "text", required, auto, placeholder }: { id: string; name: string; label: string; type?: string; required?: boolean; auto?: string; placeholder?: string }) {
+function Field({ id, name, label, type = "text", required, auto, placeholder, defaultValue }: { id: string; name: string; label: string; type?: string; required?: boolean; auto?: string; placeholder?: string; defaultValue?: string }) {
   return (
     <div>
       <label className="label" htmlFor={id}>
         {label}
       </label>
-      <input id={id} name={name} type={type} required={required} maxLength={500} autoComplete={auto} placeholder={placeholder} className="field" />
+      <input id={id} name={name} type={type} required={required} maxLength={500} autoComplete={auto} placeholder={placeholder} defaultValue={defaultValue} className="field" />
     </div>
   );
 }

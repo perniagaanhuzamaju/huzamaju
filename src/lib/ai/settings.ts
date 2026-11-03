@@ -10,6 +10,8 @@ export type AiConfig = {
   maxTokens: number;
   dailyLimit: number;
   perIpHourly: number;
+  perIpDaily: number;
+  perPhoneDaily: number;
   sendAttachments: boolean;
   maxAttachments: number;
   extraInstructions: string;
@@ -34,10 +36,12 @@ export async function getAiConfig(): Promise<AiConfig> {
     maxTokens: num("max_tokens", e.AI_MAX_TOKENS),
     dailyLimit: num("daily_limit", e.AI_DAILY_REQUEST_LIMIT),
     perIpHourly: num("per_ip_hourly", e.AI_PER_IP_HOURLY_LIMIT),
+    perIpDaily: num("per_ip_daily", 3),
+    perPhoneDaily: num("per_phone_daily", 2),
     sendAttachments: m.get("send_attachments") !== "0",
     maxAttachments: num("max_attachments", 4),
     extraInstructions: m.get("extra_instructions") ?? "",
   };
 }
 
-export const AI_SETTING_KEYS = ["enabled", "model", "effort", "max_tokens", "daily_limit", "per_ip_hourly", "send_attachments", "max_attachments", "extra_instructions"] as const;
+export const AI_SETTING_KEYS = ["enabled", "model", "effort", "max_tokens", "daily_limit", "per_ip_hourly", "per_ip_daily", "per_phone_daily", "send_attachments", "max_attachments", "extra_instructions"] as const;

@@ -25,6 +25,7 @@ const T = {
     s3: "Langkah 3: Maklumat projek",
     s3lead: "Lebih terperinci maklumat anda, lebih tepat anggaran. Ukuran dalam kaki atau meter kedua-duanya diterima.",
     customerName: "Nama anda",
+    customerPhone: "No. telefon / WhatsApp",
     location: "Lokasi projek (bandar / daerah)",
     locationPh: "cth: Taman Sri Lambak, Kluang",
     projectType: "Jenis projek",
@@ -58,7 +59,7 @@ const T = {
     waitNote: "Analisis biasanya mengambil masa 20 hingga 90 saat.",
     unavailable: "Analisis automatik tidak tersedia sekarang. Permintaan anda telah direkodkan dan QS kami akan menyediakan anggaran secara manual.",
     invalidFile: "Hanya PDF, JPG atau PNG sehingga 10 MB.",
-    required: "Sila isi lokasi projek dan sekurang-kurangnya ukuran, kuantiti atau catatan.",
+    required: "Sila isi nama, no. telefon, lokasi projek dan sekurang-kurangnya ukuran, kuantiti atau catatan.",
   },
   en: {
     s1: "Step 1: Choose a work category",
@@ -68,6 +69,7 @@ const T = {
     s3: "Step 3: Project information",
     s3lead: "The more detail you give, the sharper the estimate. Feet or metres are both fine.",
     customerName: "Your name",
+    customerPhone: "Phone / WhatsApp",
     location: "Project location (town / district)",
     locationPh: "e.g. Taman Sri Lambak, Kluang",
     projectType: "Project type",
@@ -101,7 +103,7 @@ const T = {
     waitNote: "Analysis usually takes 20 to 90 seconds.",
     unavailable: "Automatic analysis is unavailable right now. Your request has been recorded and our QS will prepare the estimate manually.",
     invalidFile: "Only PDF, JPG or PNG up to 10 MB.",
-    required: "Please fill in the project location and at least the measurements, quantity or remarks.",
+    required: "Please fill in your name, phone number, project location and at least the measurements, quantity or remarks.",
   },
 };
 
@@ -175,7 +177,8 @@ export function QuotationWizard({ lang, categories, services, initialCategory, t
   }
 
   async function analyse() {
-    if (!form.location?.trim() || !(form.measurements?.trim() || form.quantity?.trim() || form.remarks?.trim())) {
+    const phoneDigits = (form.customerPhone ?? "").replace(/\D/g, "");
+    if ((form.customerName?.trim().length ?? 0) < 2 || phoneDigits.length < 9 || !form.location?.trim() || !(form.measurements?.trim() || form.quantity?.trim() || form.remarks?.trim())) {
       setError(t.required);
       return;
     }
@@ -291,7 +294,8 @@ export function QuotationWizard({ lang, categories, services, initialCategory, t
           </p>
           <p className="mt-2 max-w-2xl text-sm text-mute">{t.s3lead}</p>
           <div className="card mt-6 grid gap-4 p-6 md:grid-cols-2">
-            <In id="customerName" label={t.customerName} value={form.customerName} onChange={set("customerName")} auto="name" />
+            <In id="customerName" label={`${t.customerName} *`} value={form.customerName} onChange={set("customerName")} auto="name" required />
+            <In id="customerPhone" label={`${t.customerPhone} *`} value={form.customerPhone} onChange={set("customerPhone")} placeholder="01X-XXX XXXX" auto="tel" required type="tel" />
             <In id="location" label={`${t.location} *`} value={form.location} onChange={set("location")} placeholder={t.locationPh} required />
             <Sel id="projectType" label={t.projectType} value={form.projectType} onChange={set("projectType")} options={t.projectTypes} placeholder={t.select} />
             <Sel id="buildingType" label={t.buildingType} value={form.buildingType} onChange={set("buildingType")} options={t.buildingTypes} placeholder={t.select} />
@@ -362,7 +366,7 @@ export function QuotationWizard({ lang, categories, services, initialCategory, t
       {step >= 6 && result && (
         <section>
           {unavailable && <p className="mb-6 rounded-lg bg-amber/15 p-4 text-sm font-semibold">{t.unavailable}</p>}
-          <QuotationResult initial={result} />
+          <QuotationResult initial={result} prefill={{ name: form.customerName ?? "", phone: form.customerPhone ?? "" }} />
         </section>
       )}
     </div>
@@ -371,13 +375,13 @@ export function QuotationWizard({ lang, categories, services, initialCategory, t
 
 type FieldProps = { id: string; label: string; value?: string; onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void; placeholder?: string };
 
-function In({ id, label, value, onChange, placeholder, required, auto }: FieldProps & { required?: boolean; auto?: string }) {
+function In({ id, label, value, onChange, placeholder, required, auto, type = "text" }: FieldProps & { required?: boolean; auto?: string; type?: string }) {
   return (
     <div>
       <label className="label" htmlFor={`w-${id}`}>
         {label}
       </label>
-      <input id={`w-${id}`} className="field" value={value ?? ""} onChange={onChange} placeholder={placeholder} required={required} maxLength={200} autoComplete={auto} />
+      <input id={`w-${id}`} type={type} className="field" value={value ?? ""} onChange={onChange} placeholder={placeholder} required={required} maxLength={200} autoComplete={auto} />
     </div>
   );
 }

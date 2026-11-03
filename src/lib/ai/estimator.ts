@@ -123,7 +123,7 @@ export function sanitizeEstimate(est: Estimate, cands: Candidate[]): Estimate {
 }
 
 export class EstimatorUnavailable extends Error {
-  constructor(public reason: "disabled" | "not_configured" | "daily_limit" | "ip_limit" | "failed", message: string) {
+  constructor(public reason: "disabled" | "not_configured" | "daily_limit" | "ip_limit" | "contact_limit" | "failed", message: string) {
     super(message);
   }
 }
@@ -142,6 +142,8 @@ export async function runEstimator(args: {
   candidates: Candidate[];
   attachments: AiAttachment[];
   ipHash: string | null;
+  /** Hash of the customer's normalised phone number, for the per-phone daily limit. */
+  phoneHash?: string | null;
   userId: number | null;
   quotationId?: number | null;
   purpose?: "estimate" | "refine";
@@ -169,6 +171,20 @@ export async function runEstimator(args: {
     if (!rl.allowed) {
       await log({ ...base, status: "blocked", error: "ip_limit" });
       throw new EstimatorUnavailable("ip_limit", "Terlalu banyak permintaan anggaran dari rangkaian anda. Sila cuba dalam sejam.");
+    }
+  }
+  // Daily caps per network and per phone number. Over the cap the request still reaches a QS, without AI.
+  if (purpose === "estimate") {
+    const caps: [string, number][] = [
+      [`ai-day-ip:${args.ipHash ?? "unknown"}`, cfg.perIpDaily],
+      ...(args.phoneHash ? [[`ai-day-phone:${args.phoneHash}`, cfg.perPhoneDaily] as [string, number]] : []),
+    ];
+    for (const [key, limit] of caps) {
+      if (limit <= 0) continue;
+      if (!(await rateLimit(key, limit, 86400)).allowed) {
+        await log({ ...base, status: "blocked", error: "contact_limit" });
+        throw new EstimatorUnavailable("contact_limit", "Had anggaran AI harian untuk anda telah dicapai");
+      }
     }
   }
 

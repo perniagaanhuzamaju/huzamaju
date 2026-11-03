@@ -43,6 +43,7 @@ export type QuotationInputs = {
   categoryKey: string;
   work: string;
   customerName?: string;
+  customerPhone?: string;
   location: string;
   projectType: string;
   buildingType: string;
