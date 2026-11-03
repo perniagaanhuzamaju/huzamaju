@@ -147,7 +147,7 @@ export default async function About({ params }: PageProps<"/[lang]/about">) {
 
       <Section>
         <div className="grid items-center gap-10 lg:grid-cols-2">
-          <Photo src="/img/projek/proj_palm2.jpg" alt={ms ? "Pemadatan jalan ladang" : "Estate road compaction"} lang={lang} className="aspect-[16/10]" />
+          <Photo src={STOCK.inspection} alt={ms ? "Jurutera memeriksa bangunan" : "Engineers inspecting a building"} lang={lang} actual={false} className="aspect-[16/10]" />
           <div>
             <Heading eyebrow={d.labels.registered} title={ms ? "Berdaftar & diiktiraf." : "Registered & recognised."} />
             <ul className="mt-6 space-y-2 text-[15px]">
