@@ -18,12 +18,12 @@ export function ManpowerSection({ lang }: { lang: Lang }) {
               <span className="h-1.5 w-6 rounded-full bg-amber" /> {ms ? "Bekalan Tenaga Kerja" : "Manpower Supply"}
             </span>
             <h2 className="mt-5 text-[32px] leading-[1.08] font-extrabold tracking-[-0.02em] md:text-[48px]">
-              {ms ? "Pasukan yang tepat," : "The right crew,"} <span className="text-gradient-gold">{ms ? "di tapak tepat pada masanya." : "on site when you need it."}</span>
+              {ms ? "Tenaga kerja untuk" : "Manpower for"} <span className="text-gradient-gold">{ms ? "bangunan, kilang & ladang." : "buildings, factories & estates."}</span>
             </h2>
             <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-white/65">
               {ms
-                ? "Kami membekalkan pekerja am, tukang mahir dan penyelia untuk kontraktor, pemaju, kilang dan pengurus fasiliti. Setiap pasukan datang dengan ketua pasukan, taklimat keselamatan dan laporan kehadiran, disokong oleh kontraktor berdaftar CIDB G2 yang memahami kerja di tapak."
-                : "We supply general workers, skilled tradesmen and supervisors to contractors, developers, factories and facility managers. Every crew comes with a team leader, a safety briefing and attendance reports, backed by a CIDB G2 registered contractor that understands site work."}
+                ? "Kami membekalkan pekerja am, tukang mahir dan penyelia untuk penyelenggaraan bangunan, kilang dan ladang, termasuk syarikat pengurusan fasiliti dan kontraktor. Setiap pasukan datang dengan ketua pasukan, taklimat keselamatan dan laporan kehadiran, disokong oleh kontraktor berdaftar CIDB G2 yang memahami kerja penyelenggaraan."
+                : "We supply general workers, skilled tradesmen and supervisors for building, factory and estate maintenance, including facility management companies and contractors. Every crew comes with a team leader, a safety briefing and attendance reports, backed by a CIDB G2 registered contractor that understands maintenance work."}
             </p>
             <ul className="mt-7 flex flex-wrap gap-2">
               {MANPOWER_TRADES[lang].map((x) => (
@@ -41,7 +41,7 @@ export function ManpowerSection({ lang }: { lang: Lang }) {
           </div>
           <div className="relative">
             <div className="ph relative aspect-[4/3.4] overflow-hidden rounded-[28px]">
-              <Image src={STOCK.crewSunset} alt={ms ? "Pasukan pekerja di tapak binaan" : "Work crew on a construction site"} fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
+              <Image src={STOCK.factoryCrew} alt={ms ? "Pasukan pekerja di kilang" : "Work crew in a factory"} fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" />
             </div>
             <div className="hv-card absolute -bottom-6 left-4 max-w-[78%] sm:left-6">
               <p className="hv-k">{ms ? "Tempoh kontrak" : "Contract terms"}</p>
@@ -70,7 +70,7 @@ export function ManpowerDetails({ lang }: { lang: Lang }) {
     <section className="bg-sand py-20 md:py-24">
       <div className="wrap">
         <span className="eyebrow">{ms ? "Proses kami" : "Our process"}</span>
-        <h2 className="h2">{ms ? "Dari permintaan hingga pasukan di tapak." : "From request to crew on site."}</h2>
+        <h2 className="h2">{ms ? "Dari permintaan hingga pasukan di lokasi." : "From request to crew on location."}</h2>
         <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {MANPOWER_STEPS[lang].map(([title, text], i) => (
             <li key={title} className="card p-5">

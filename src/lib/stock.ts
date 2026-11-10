@@ -87,6 +87,11 @@ export const STOCK = {
   carpentry: u("1773430272653-375174373c4f"),
   welder: u("1698664683348-f9f35b809821"),
   safetyGear: u("1662309376159-b95fb193d96b"),
+  estateRoad: u("1639805855046-818d9159387b"),
+  estateGrove: u("1647999534523-6c5d73b8bf26"),
+  factoryCrew: u("1652211955967-99c892925469"),
+  factoryMachine: u("1717386255773-1e3037c81788"),
+  maintenanceTech: u("1614213951697-a45781262acf"),
 } as const;
 
 /** Illustrative image for each service, by slug. */
@@ -158,11 +163,11 @@ export const SERVICE_STOCK: Record<string, string> = {
   "persediaan-infrastruktur-it": STOCK.dataCenter,
   "pemasangan-peralatan-teknologi": STOCK.imac,
   "bekalan-pekerja-am": STOCK.siteWorkers,
-  "bekalan-pekerja-mahir": STOCK.carpentry,
-  "tenaga-kerja-tapak-binaan": STOCK.scaffold,
-  "tukang-bata-plaster-jubin": STOCK.bricklayer,
-  "jurukimpal-fabrikasi": STOCK.welder,
+  "bekalan-pekerja-mahir": STOCK.maintenanceTech,
+  "tenaga-kerja-penyelenggaraan-bangunan": STOCK.ladder,
+  "tenaga-kerja-kilang": STOCK.factoryCrew,
+  "tenaga-kerja-ladang": STOCK.estateRoad,
+  "tenaga-kerja-fasiliti": STOCK.mowing,
   "penyelia-ketua-pasukan": STOCK.supervisors,
-  "tenaga-kerja-fasiliti": STOCK.factoryLine,
-  "tenaga-kerja-jangka-pendek": STOCK.safetyGear,
+  "tenaga-kerja-jangka-pendek": STOCK.scaffold,
 };
