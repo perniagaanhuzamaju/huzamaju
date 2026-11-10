@@ -19,8 +19,8 @@ export const MANPOWER_STEPS = {
 } satisfies Record<Lang, [string, string][]>;
 
 export const MANPOWER_TRADES = {
-  ms: ["Pekerja am", "Pekerja penyelenggaraan", "Pendawai", "Tukang paip", "Jurukimpal", "Tukang cat", "Tukang bata & plaster", "Pekerja kilang", "Pekerja ladang", "Pekerja landskap", "Pekerja pembersihan", "Penyelia"],
-  en: ["General workers", "Maintenance workers", "Wiremen", "Plumbers", "Welders", "Painters", "Bricklayers & plasterers", "Factory workers", "Estate workers", "Landscape workers", "Cleaning crew", "Supervisors"],
+  ms: ["Pekerja am", "Pekerja penyelenggaraan", "Elektrikal", "Tukang paip", "Jurukimpal", "Tukang cat", "Tukang bata & plaster", "Pekerja kilang", "Pekerja ladang", "Pekerja landskap", "Pekerja pembersihan", "Penyelia"],
+  en: ["General workers", "Maintenance workers", "Electrical", "Plumbers", "Welders", "Painters", "Bricklayers & plasterers", "Factory workers", "Estate workers", "Landscape workers", "Cleaning crew", "Supervisors"],
 } satisfies Record<Lang, string[]>;
 
 export const MANPOWER_TERMS = {
