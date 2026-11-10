@@ -48,7 +48,7 @@ export function orgJsonLd() {
       addressRegion: COMPANY.state,
       addressCountry: "MY",
     },
-    areaServed: [{ "@type": "State", name: "Johor" }, { "@type": "Country", name: "Malaysia" }],
+    areaServed: [{ "@type": "Country", name: "Malaysia" }],
     founder: { "@type": "Person", name: COMPANY.owner },
     knowsAbout: ["Building construction", "Renovation", "Civil engineering", "Road works", "Drainage", "Earthworks", "Facilities maintenance", "Cleaning", "ICT", "Design and build"],
   };

@@ -23,10 +23,10 @@ export async function generateMetadata({ params }: PageProps<"/[lang]">): Promis
   return pageMeta(
     lang,
     "/",
-    lang === "ms" ? "HUZA MAJU | Kontraktor Binaan, Renovation & Sivil Kluang, Johor" : "HUZA MAJU | Construction & Civil Contractor in Johor",
+    lang === "ms" ? "HUZA MAJU | Kontraktor Binaan, Renovation & Sivil Seluruh Malaysia" : "HUZA MAJU | Construction & Civil Contractor in Malaysia",
     lang === "ms"
-      ? "Kontraktor Kluang & Johor: pembinaan, renovation rumah dan komersial, jalan raya, saliran, penyelenggaraan, pembersihan dan ICT. Berdaftar CIDB. Sebut harga AI segera."
-      : "Construction company in Johor: building, residential and commercial renovation, roads, drainage, maintenance, cleaning and ICT. CIDB registered. Instant AI estimates.",
+      ? "Kontraktor dari Kluang untuk seluruh Malaysia: pembinaan, renovation rumah dan komersial, jalan raya, saliran, penyelenggaraan, pembersihan dan ICT. Berdaftar CIDB. Sebut harga AI segera."
+      : "Construction company serving all of Malaysia: building, residential and commercial renovation, roads, drainage, maintenance, cleaning and ICT. CIDB registered. Instant AI estimates.",
   );
 }
 

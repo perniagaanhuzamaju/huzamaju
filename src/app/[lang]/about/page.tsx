@@ -42,7 +42,7 @@ export default async function About({ params }: PageProps<"/[lang]/about">) {
         ["Pendekatan pengurusan projek", "Skop, harga, jadual bayaran dan tempoh siap dipersetujui secara bertulis. Penyelia berada di tapak, progres dilaporkan bersama gambar, dan sebarang perubahan dipersetujui sebelum dilaksanakan."],
         ["Jaminan kualiti", "Kawalan bahan, pemeriksaan kemasan harian, pemeriksaan bersama sebelum serahan dan pembaikan senarai kecacatan."],
         ["Komitmen keselamatan", "PPE, papan tanda dan kawalan tapak di setiap projek, termasuk method statement untuk kerja berisiko seperti perobohan."],
-        ["Liputan perkhidmatan", "Berpangkalan di Kluang dan melaksanakan kerja di seluruh Johor. Projek di negeri lain diterima mengikut skop, dengan pengalaman di Perak dan Kelantan."],
+        ["Liputan perkhidmatan", "Berpangkalan di Kluang, Johor dan melaksanakan kerja di seluruh Malaysia."],
         ["Hala tuju pembangunan perniagaan", "Mengembangkan kerja reka & bina, penyelenggaraan fasiliti dan ICT, membina rangkaian rakan niaga di seluruh Malaysia, dan menggunakan teknologi seperti AI untuk sebut harga yang lebih pantas dan konsisten."],
       ]
     : [
@@ -52,7 +52,7 @@ export default async function About({ params }: PageProps<"/[lang]/about">) {
         ["Project management approach", "Scope, price, payment schedule and completion are agreed in writing. A supervisor is on site, progress is reported with photos, and any change is agreed before it is carried out."],
         ["Quality assurance", "Material control, daily finish checks, joint inspection before handover and defect rectification."],
         ["Safety commitment", "PPE, signage and site control on every project, including method statements for higher-risk work such as demolition."],
-        ["Service coverage", "Based in Kluang and working throughout Johor. Projects in other states are accepted depending on scope, with experience in Perak and Kelantan."],
+        ["Service coverage", "Based in Kluang, Johor and working throughout Malaysia."],
         ["Business development direction", "Growing design & build, facilities maintenance and ICT, building a nationwide partner network, and using technology such as AI for faster, more consistent quotations."],
       ];
 

@@ -30,7 +30,7 @@ export default async function Contact({ params }: PageProps<"/[lang]/contact">) 
   return (
     <>
       <PageHero lang={lang} eyebrow={d.nav.contact} title={ms ? "Ada projek? Jom bincang." : "Have a project? Let's talk."}
-        lead={ms ? "Lawatan tapak dan sebut harga adalah percuma di sekitar Kluang. Kami juga menerima kerja di seluruh Johor dan negeri lain mengikut skop." : "Site visits and quotations are free around Kluang. We also take on work throughout Johor and other states depending on scope."} />
+        lead={ms ? "Lawatan tapak dan sebut harga adalah percuma di sekitar Kluang. Kami menerima kerja di seluruh Malaysia." : "Site visits and quotations are free around Kluang. We take on work throughout Malaysia."} />
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr]">
           <ul className="space-y-3">

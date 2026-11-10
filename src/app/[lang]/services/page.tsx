@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/services">
     "/services",
     lang === "ms" ? "Perkhidmatan: Binaan, Sivil, Fasiliti & ICT" : "Services: Construction, Civil, Facilities & ICT",
     lang === "ms"
-      ? "Katalog lengkap perkhidmatan HUZA MAJU: bina rumah, renovation, jalan raya, saliran, kerja tanah, penyelenggaraan bangunan, pembersihan dan ICT di Johor."
-      : "Full HUZA MAJU service catalogue: house construction, renovation, roads, drainage, earthworks, building maintenance, cleaning and ICT in Johor.",
+      ? "Katalog lengkap perkhidmatan HUZA MAJU: bina rumah, renovation, jalan raya, saliran, kerja tanah, penyelenggaraan bangunan, pembersihan dan ICT di seluruh Malaysia."
+      : "Full HUZA MAJU service catalogue: house construction, renovation, roads, drainage, earthworks, building maintenance, cleaning and ICT across Malaysia.",
   );
 }
 

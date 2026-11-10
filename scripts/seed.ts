@@ -266,8 +266,8 @@ async function content() {
     ["stat_clients_label", "Pelanggan", "Clients"],
     ["stat_workforce", "", ""],
     ["stat_workforce_label", "Tenaga kerja teknikal", "Technical workforce"],
-    ["stat_states", "3", "3"],
-    ["stat_states_label", "Negeri: Johor, Perak & Kelantan", "States: Johor, Perak & Kelantan"],
+    ["stat_states", "Malaysia", "Malaysia"],
+    ["stat_states_label", "Liputan perkhidmatan ke seluruh negara", "Nationwide service coverage"],
     ["stat_machinery", "10", "10"],
     ["stat_machinery_label", "Jentera & lori sendiri", "Own machinery & lorries"],
     [

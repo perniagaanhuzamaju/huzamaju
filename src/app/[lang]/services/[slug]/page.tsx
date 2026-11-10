@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/services/[
   const { lang, slug } = (await params) as { lang: Lang; slug: string };
   const s = await getService(slug);
   if (!s) return {};
-  const title = lang === "ms" ? `${s.titleMs} di Kluang & Johor` : `${s.titleEn} in Johor`;
+  const title = lang === "ms" ? `${s.titleMs} di Seluruh Malaysia` : `${s.titleEn} in Malaysia`;
   return pageMeta(lang, `/services/${slug}`, title, lang === "ms" ? s.summaryMs : s.summaryEn, s.image ?? undefined);
 }
 
@@ -50,7 +50,7 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
     name: title,
     description: ms ? s.summaryMs : s.summaryEn,
     provider: { "@id": `${SITE_URL}/#org` },
-    areaServed: "Johor, Malaysia",
+    areaServed: "Malaysia",
     url: `${SITE_URL}${href(lang, `/services/${s.slug}`)}`,
   };
   return (

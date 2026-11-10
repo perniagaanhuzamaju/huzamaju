@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: PageProps<"/[lang]/projects">): Promise<Metadata> {
   const { lang } = (await params) as { lang: Lang };
   return pageMeta(lang, "/projects", lang === "ms" ? "Projek & Portfolio" : "Projects & Portfolio",
-    lang === "ms" ? "Rekod projek HUZA MAJU: renovation rumah, bangunan, jalan raya, infrastruktur dan kerja industri di Johor, Perak dan Kelantan." : "HUZA MAJU project record: renovations, buildings, roads, infrastructure and industrial works in Johor, Perak and Kelantan.");
+    lang === "ms" ? "Rekod projek HUZA MAJU: renovation rumah, bangunan, jalan raya, infrastruktur dan kerja industri di seluruh Malaysia." : "HUZA MAJU project record: renovations, buildings, roads, infrastructure and industrial works across Malaysia.");
 }
 
 export default async function Projects({ params }: PageProps<"/[lang]/projects">) {

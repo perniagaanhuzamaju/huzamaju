@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/quotation"
     "/quotation",
     lang === "ms" ? "Sebut Harga Segera AI" : "AI Instant Quotation",
     lang === "ms"
-      ? "Dapatkan anggaran bajet awal untuk renovation, bina rumah, bumbung, cat, paip, elektrik, kerja sivil dan pembersihan di Johor dalam beberapa minit."
-      : "Get a preliminary budget estimate for renovation, house construction, roofing, painting, plumbing, wiring, civil works and cleaning in Johor within minutes.",
+      ? "Dapatkan anggaran bajet awal untuk renovation, bina rumah, bumbung, cat, paip, elektrik, kerja sivil dan pembersihan di seluruh Malaysia dalam beberapa minit."
+      : "Get a preliminary budget estimate for renovation, house construction, roofing, painting, plumbing, wiring, civil works and cleaning across Malaysia within minutes.",
   );
 }
 

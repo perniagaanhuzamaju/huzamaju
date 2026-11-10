@@ -22,13 +22,13 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
     metadataBase: new URL(SITE_URL),
     title: {
       default: ms
-        ? "HUZA MAJU | Kontraktor Binaan, Renovation & Sivil Kluang, Johor"
-        : "HUZA MAJU | Construction, Renovation & Civil Contractor in Johor",
+        ? "HUZA MAJU | Kontraktor Binaan, Renovation & Sivil Seluruh Malaysia"
+        : "HUZA MAJU | Construction, Renovation & Civil Contractor in Malaysia",
       template: "%s | HUZA MAJU",
     },
     description: ms
-      ? "PERNIAGAAN HUZA MAJU: kontraktor Bumiputera berdaftar CIDB (B, CE, ME) di Kluang, Johor. Pembinaan, renovation, jalan raya, saliran, penyelenggaraan, pembersihan & ICT."
-      : "PERNIAGAAN HUZA MAJU: CIDB-registered (B, CE, ME) Bumiputera contractor in Kluang, Johor. Construction, renovation, roads, drainage, maintenance, cleaning & ICT.",
+      ? "PERNIAGAAN HUZA MAJU: kontraktor Bumiputera berdaftar CIDB (B, CE, ME) di Kluang, Johor, berkhidmat di seluruh Malaysia. Pembinaan, renovation, jalan raya, saliran, penyelenggaraan, pembersihan & ICT."
+      : "PERNIAGAAN HUZA MAJU: CIDB-registered (B, CE, ME) Bumiputera contractor in Kluang, Johor, serving all of Malaysia. Construction, renovation, roads, drainage, maintenance, cleaning & ICT.",
     icons: { icon: "/img/favicon.png", apple: "/img/apple-touch-icon.png" },
     verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
     applicationName: COMPANY.shortName,
