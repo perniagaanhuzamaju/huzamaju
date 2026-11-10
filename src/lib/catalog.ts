@@ -672,8 +672,8 @@ export const SOLUTIONS: { slug: string; title: L; lead: L; points: { ms: string[
     title: { ms: "Bekalan Tenaga Kerja Penyelenggaraan", en: "Maintenance Manpower Supply" },
     lead: { ms: "Pekerja am, tukang mahir dan penyelia untuk penyelenggaraan bangunan, kilang dan ladang. Anda nyatakan keperluan, kami sediakan pasukan.", en: "General workers, skilled tradesmen and supervisors for building, factory and estate maintenance. Tell us what you need and we provide the team." },
     points: {
-      ms: ["Bangunan, kilang & ladang dalam satu pembekal", "Pekerja am & pekerja mahir", "Penyelia & ketua pasukan untuk mengurus kerja harian", "Taklimat keselamatan sebelum kerja bermula", "Kontrak harian, bulanan atau tahunan", "Laporan kehadiran untuk setiap pasukan", "Sokongan kontraktor berdaftar CIDB G2"],
-      en: ["Buildings, factories & estates from one provider", "General & skilled workers", "Supervisors & team leaders to manage daily work", "Safety briefing before work starts", "Daily, monthly or annual contracts", "Attendance reports for every crew", "Backed by a CIDB G2 registered contractor"],
+      ms: ["Bangunan, kilang & ladang dalam satu pembekal", "Pekerja am & pekerja mahir", "Penyelia & ketua pasukan untuk mengurus kerja harian", "Taklimat keselamatan sebelum kerja bermula", "Kontrak harian, bulanan atau tahunan", "Laporan kehadiran untuk setiap pasukan", "Sokongan kontraktor berdaftar CIDB"],
+      en: ["Buildings, factories & estates from one provider", "General & skilled workers", "Supervisors & team leaders to manage daily work", "Safety briefing before work starts", "Daily, monthly or annual contracts", "Attendance reports for every crew", "Backed by a CIDB-registered contractor"],
     },
     groups: ["manpower"],
     quote: "other",

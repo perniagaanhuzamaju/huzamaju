@@ -22,8 +22,8 @@ export function ManpowerSection({ lang }: { lang: Lang }) {
             </h2>
             <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-white/65">
               {ms
-                ? "Kami membekalkan pekerja am, tukang mahir dan penyelia untuk penyelenggaraan bangunan, kilang dan ladang, termasuk syarikat pengurusan fasiliti dan kontraktor. Setiap pasukan datang dengan ketua pasukan, taklimat keselamatan dan laporan kehadiran, disokong oleh kontraktor berdaftar CIDB G2 yang memahami kerja penyelenggaraan."
-                : "We supply general workers, skilled tradesmen and supervisors for building, factory and estate maintenance, including facility management companies and contractors. Every crew comes with a team leader, a safety briefing and attendance reports, backed by a CIDB G2 registered contractor that understands maintenance work."}
+                ? "Kami membekalkan pekerja am, tukang mahir dan penyelia untuk penyelenggaraan bangunan, kilang dan ladang, termasuk syarikat pengurusan fasiliti dan kontraktor. Setiap pasukan datang dengan ketua pasukan, taklimat keselamatan dan laporan kehadiran, disokong oleh kontraktor berdaftar CIDB yang memahami kerja penyelenggaraan."
+                : "We supply general workers, skilled tradesmen and supervisors for building, factory and estate maintenance, including facility management companies and contractors. Every crew comes with a team leader, a safety briefing and attendance reports, backed by a CIDB-registered contractor that understands maintenance work."}
             </p>
             <ul className="mt-7 flex flex-wrap gap-2">
               {MANPOWER_TRADES[lang].map((x) => (
