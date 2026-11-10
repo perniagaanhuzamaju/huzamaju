@@ -252,6 +252,12 @@ export const SERVICE_GROUPS: { key: string; name: L; tagline: L; image: string }
     tagline: { ms: "CCTV, rangkaian dan bekalan peralatan ICT.", en: "CCTV, networking and ICT equipment supply." },
     image: STOCK.server,
   },
+  {
+    key: "manpower",
+    name: { ms: "Bekalan Tenaga Kerja", en: "Manpower Supply" },
+    tagline: { ms: "Pekerja am dan pekerja mahir untuk tapak binaan, kilang dan fasiliti, dengan penyeliaan.", en: "General and skilled workers for construction sites, factories and facilities, with supervision." },
+    image: STOCK.manpowerTeam,
+  },
 ];
 
 type Svc = {
@@ -551,6 +557,40 @@ export const DEFAULT_SERVICES: Svc[] = [
     "Pemasangan peralatan teknologi seperti paparan, audio dan kawalan akses.", "Installation of technology equipment such as displays, audio and access control.",
     ["Paparan & projektor", "Sistem audio", "Sistem kawalan akses"],
     ["Displays & projectors", "Audio systems", "Access control systems"]),
+
+  // E. Manpower supply (enquiry-based: not priced by the AI estimator)
+  s("bekalan-pekerja-am", "manpower", "other", "Bekalan Pekerja Am", "General Worker Supply",
+    "Pekerja am untuk tapak binaan, kilang, gudang dan fasiliti, dibekalkan ikut bilangan dan tempoh yang anda perlukan.", "General workers for construction sites, factories, warehouses and facilities, supplied in the numbers and for the period you need.",
+    ["Kerja am tapak, angkat & alih bahan", "Pembantu tukang & kerja persediaan", "Kebersihan tapak & kerja sokongan", "Kerja harian, mingguan atau ikut projek"],
+    ["General site work, material handling", "Trade helpers & preparation work", "Site housekeeping & support work", "Daily, weekly or per-project engagement"]),
+  s("bekalan-pekerja-mahir", "manpower", "other", "Bekalan Pekerja Mahir", "Skilled Worker Supply",
+    "Tukang dan pekerja mahir untuk menambah kapasiti pasukan anda tanpa menambah beban pengambilan.", "Tradesmen and skilled workers to add capacity to your team without the burden of hiring.",
+    ["Tukang bata, plaster & jubin", "Tukang kayu & bekerja acuan", "Jurukimpal & fabrikasi besi", "Pendawai & tukang paip"],
+    ["Bricklayers, plasterers & tilers", "Carpenters & formwork", "Welders & steel fabrication", "Wiremen & plumbers"]),
+  s("tenaga-kerja-tapak-binaan", "manpower", "other", "Tenaga Kerja Tapak Binaan", "Construction Site Manpower",
+    "Pasukan lengkap untuk kerja struktur, kemasan dan kerja luar bagi kontraktor utama dan pemaju.", "Complete crews for structural, finishing and external works for main contractors and developers.",
+    ["Pasukan konkrit, besi tetulang & acuan", "Pasukan kemasan & cat", "Pasukan kerja luaran & landskap", "Diketuai oleh ketua pasukan"],
+    ["Concrete, rebar & formwork crews", "Finishing & painting crews", "External works & landscaping crews", "Led by a team leader"]),
+  s("tukang-bata-plaster-jubin", "manpower", "other", "Tukang Bata, Plaster & Jubin", "Bricklayers, Plasterers & Tilers",
+    "Tukang kemasan untuk kerja dinding, lantai dan bilik air, sesuai untuk fasa kemasan projek.", "Finishing tradesmen for walls, floors and bathrooms, suited to the finishing phase of a project.",
+    ["Susun bata & blok", "Plaster dinding & skim coat", "Jubin lantai, dinding & bilik air", "Pembaikan kemasan"],
+    ["Brick & block laying", "Wall plastering & skim coat", "Floor, wall & bathroom tiling", "Finishing repairs"]),
+  s("jurukimpal-fabrikasi", "manpower", "other", "Jurukimpal & Fabrikasi", "Welders & Fabricators",
+    "Jurukimpal dan pekerja fabrikasi untuk kerja besi di tapak atau di bengkel.", "Welders and fabrication workers for steelwork on site or in the workshop.",
+    ["Kimpalan struktur & besi ringan", "Pagar, grill & kekuda besi", "Pemasangan di tapak", "Kerja baik pulih besi"],
+    ["Structural & light steel welding", "Fences, grilles & steel trusses", "On-site installation", "Steel repair works"]),
+  s("penyelia-ketua-pasukan", "manpower", "other", "Penyelia & Ketua Pasukan", "Supervisors & Team Leaders",
+    "Penyelia tapak dan ketua pasukan untuk mengurus pekerja, kemajuan kerja dan keselamatan harian.", "Site supervisors and team leaders to manage workers, daily progress and safety.",
+    ["Pengurusan pekerja harian", "Taklimat keselamatan (toolbox)", "Laporan kehadiran & progres", "Penyelarasan dengan pihak tapak"],
+    ["Daily workforce management", "Safety toolbox briefings", "Attendance & progress reports", "Coordination with the site team"]),
+  s("tenaga-kerja-fasiliti", "manpower", "other", "Tenaga Kerja Fasiliti & Pembersihan", "Facilities & Cleaning Manpower",
+    "Pekerja pembersihan dan penyelenggaraan untuk premis, kilang dan kawasan awam secara kontrak.", "Cleaning and maintenance workers for premises, factories and public areas on contract.",
+    ["Pekerja pembersihan premis", "Pekerja penyelenggaraan am", "Potong rumput & landskap", "Jadual syif ikut keperluan"],
+    ["Premises cleaning workers", "General maintenance workers", "Grass cutting & landscaping", "Shift schedules to your needs"]),
+  s("tenaga-kerja-jangka-pendek", "manpower", "other", "Tenaga Kerja Jangka Pendek & Kecemasan", "Short-Term & Urgent Manpower",
+    "Tambahan pekerja untuk kerja segera, puncak beban kerja atau tempoh penutupan kilang (shutdown).", "Extra workers for urgent jobs, peak workloads or plant shutdown periods.",
+    ["Kerja segera & kecemasan", "Tempoh shutdown kilang", "Tambahan kapasiti waktu puncak", "Tempoh harian hingga beberapa bulan"],
+    ["Urgent & emergency jobs", "Plant shutdown periods", "Extra capacity at peak times", "From a day to several months"]),
 ];
 
 /** Landing pages for target customer groups. */
@@ -626,6 +666,18 @@ export const SOLUTIONS: { slug: string; title: L; lead: L; points: { ms: string[
     groups: ["ict"],
     quote: "ict",
     image: STOCK.dataCenter,
+  },
+  {
+    slug: "bekalan-tenaga-kerja",
+    title: { ms: "Bekalan Tenaga Kerja Am & Mahir", en: "General & Skilled Manpower Supply" },
+    lead: { ms: "Pekerja am, tukang mahir dan penyelia untuk tapak binaan, kilang dan fasiliti. Anda nyatakan keperluan, kami sediakan pasukan.", en: "General workers, skilled tradesmen and supervisors for construction sites, factories and facilities. Tell us what you need and we provide the team." },
+    points: {
+      ms: ["Pekerja am & pekerja mahir dalam satu pembekal", "Penyelia & ketua pasukan untuk mengurus kerja harian", "Taklimat keselamatan sebelum kerja bermula", "Kontrak harian, mingguan atau ikut projek", "Laporan kehadiran untuk setiap pasukan", "Sokongan kontraktor berdaftar CIDB G2"],
+      en: ["General & skilled workers from one provider", "Supervisors & team leaders to manage daily work", "Safety briefing before work starts", "Daily, weekly or per-project contracts", "Attendance reports for every crew", "Backed by a CIDB G2 registered contractor"],
+    },
+    groups: ["manpower"],
+    quote: "other",
+    image: STOCK.manpowerTeam,
   },
 ];
 

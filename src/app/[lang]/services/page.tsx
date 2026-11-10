@@ -31,7 +31,7 @@ export default async function Services({ params }: PageProps<"/[lang]/services">
         lang={lang}
         eyebrow={d.nav.services}
         title={lang === "ms" ? "Satu rakan kontraktor untuk setiap peringkat projek." : "One contracting partner for every stage of your project."}
-        lead={lang === "ms" ? `${services.length} perkhidmatan dalam empat bidang. Pilih servis untuk melihat skop kerja dan minta sebut harga.` : `${services.length} services across four disciplines. Choose a service to see its scope and request a quotation.`}
+        lead={lang === "ms" ? `${services.length} perkhidmatan dalam lima bidang. Pilih servis untuk melihat skop kerja dan minta sebut harga.` : `${services.length} services across five disciplines. Choose a service to see its scope and request a quotation.`}
       />
       <nav className="sticky top-[76px] z-30 border-b border-line bg-white/95 backdrop-blur" aria-label="Bidang">
         <div className="wrap flex gap-2 overflow-x-auto py-3">

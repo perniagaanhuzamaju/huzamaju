@@ -77,6 +77,16 @@ export const STOCK = {
   computers: u("1606857521015-7f9fcf423740"),
   monitors: u("1498409785966-ab341407de6e"),
   imac: u("1497215842964-222b430dc094"),
+  manpowerTeam: u("1652303518379-c0ef1c9fb2b1"),
+  crewSunset: u("1579847188804-ecba0e2ea330"),
+  siteWorkers: u("1626885930974-4b69aa21bbf9"),
+  bricklayer: u("1701850009190-2859ba2aeea6"),
+  scaffold: u("1636362006544-22445420703f"),
+  factoryLine: u("1589793463357-5fb813435467"),
+  supervisors: u("1742112125567-3e8967bad60f"),
+  carpentry: u("1773430272653-375174373c4f"),
+  welder: u("1698664683348-f9f35b809821"),
+  safetyGear: u("1662309376159-b95fb193d96b"),
 } as const;
 
 /** Illustrative image for each service, by slug. */
@@ -147,4 +157,12 @@ export const SERVICE_STOCK: Record<string, string> = {
   "penyelenggaraan-ict": STOCK.serverRack,
   "persediaan-infrastruktur-it": STOCK.dataCenter,
   "pemasangan-peralatan-teknologi": STOCK.imac,
+  "bekalan-pekerja-am": STOCK.siteWorkers,
+  "bekalan-pekerja-mahir": STOCK.carpentry,
+  "tenaga-kerja-tapak-binaan": STOCK.scaffold,
+  "tukang-bata-plaster-jubin": STOCK.bricklayer,
+  "jurukimpal-fabrikasi": STOCK.welder,
+  "penyelia-ketua-pasukan": STOCK.supervisors,
+  "tenaga-kerja-fasiliti": STOCK.factoryLine,
+  "tenaga-kerja-jangka-pendek": STOCK.safetyGear,
 };

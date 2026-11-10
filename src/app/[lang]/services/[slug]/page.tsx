@@ -9,6 +9,7 @@ import { getPortfolio, getService, getServices } from "@/lib/data/public";
 import { ProjectCover } from "@/components/site/ProjectCover";
 import { PageHero, Section, Photo } from "@/components/site/ui";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
+import { MANPOWER_STEPS } from "@/lib/manpower";
 import { IconCheck, IconSpark, IconWhatsApp } from "@/components/site/icons";
 
 export const dynamic = "force-dynamic";
@@ -18,6 +19,7 @@ const PROJECT_MATCH: Record<string, string[]> = {
   civil: ["civil", "road", "drainage", "infrastructure"],
   facilities: ["facilities", "cleaning"],
   ict: ["ict"],
+  manpower: [],
 };
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/services/[slug]">): Promise<Metadata> {
@@ -41,6 +43,7 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
   const title = ms ? s.titleMs : s.titleEn;
   const scope = (ms ? s.scopeMs : s.scopeEn) ?? [];
   const qc = s.quoteCategory ? quoteCategory(s.quoteCategory) : null;
+  const manpower = s.groupKey === "manpower";
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -65,7 +68,9 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
             <div className="mt-10 rounded-xl2 bg-sand p-6">
               <h3 className="font-bold">{ms ? "Cara kami bekerja" : "How we work"}</h3>
               <ol className="mt-4 grid gap-3 text-[15px] text-ink-2 sm:grid-cols-2">
-                {(ms
+                {(manpower
+                  ? MANPOWER_STEPS[lang].map(([x]) => x)
+                  : ms
                   ? ["Lawatan tapak & ukuran", "Sebut harga ikut item kerja", "Perjanjian & jadual bertulis", "Pelaksanaan & laporan progres", "Pemeriksaan bersama & serahan"]
                   : ["Site visit & measurement", "Itemised quotation", "Written agreement & schedule", "Execution & progress reports", "Joint inspection & handover"]
                 ).map((x, i) => (
@@ -95,14 +100,18 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
           </div>
           <aside className="space-y-4 lg:sticky lg:top-28 lg:self-start">
             <div className="rounded-xl2 bg-ink p-6 text-white">
-              <h3 className="text-lg font-bold">{ms ? "Dapatkan harga" : "Get a price"}</h3>
-              <p className="mt-2 text-sm text-white/70">{ms ? "Anggaran awal segera melalui AI, atau hubungi kami terus." : "An instant AI preliminary estimate, or contact us directly."}</p>
+              <h3 className="text-lg font-bold">{manpower ? (ms ? "Minta sebut harga tenaga kerja" : "Request a manpower quotation") : ms ? "Dapatkan harga" : "Get a price"}</h3>
+              <p className="mt-2 text-sm text-white/70">
+                {manpower
+                  ? ms ? "Nyatakan bilangan pekerja, kemahiran, lokasi dan tempoh. Kami balas dengan cadangan dan kadar." : "Tell us the headcount, skills, location and duration. We reply with a proposal and rates."
+                  : ms ? "Anggaran awal segera melalui AI, atau hubungi kami terus." : "An instant AI preliminary estimate, or contact us directly."}
+              </p>
               <div className="mt-5 grid gap-2">
-                <Link href={`${href(lang, "/quotation")}?category=${qc?.key ?? ""}`} className="btn-gold"><IconSpark /> {d.cta.instantEstimate}</Link>
+                {!manpower && <Link href={`${href(lang, "/quotation")}?category=${qc?.key ?? ""}`} className="btn-gold"><IconSpark /> {d.cta.instantEstimate}</Link>}
                 <a href={waLink(`${ms ? "Assalamualaikum, saya berminat dengan servis" : "Hello, I'm interested in"}: ${title}`)} target="_blank" rel="noopener" className="btn-wa"><IconWhatsApp /> {COMPANY.phoneDisplay}</a>
               </div>
             </div>
-            <EnquiryForm lang={lang} service={s.slug} compact />
+            <EnquiryForm lang={lang} kind={manpower ? "corporate" : "general"} service={s.slug} compact />
           </aside>
         </div>
       </Section>

@@ -4,6 +4,7 @@ import { href, t, type Lang } from "@/lib/i18n";
 import { COMPANY } from "@/lib/company";
 import { PROJECT_CATEGORIES, SERVICE_GROUPS } from "@/lib/catalog";
 import { ProjectCover } from "@/components/site/ProjectCover";
+import { ManpowerSection } from "@/components/site/Manpower";
 import { pageMeta } from "@/lib/seo";
 import { getContent, getPortfolio, getServices, getTestimonials } from "@/lib/data/public";
 import { Section, Heading, Photo, ArrowLink } from "@/components/site/ui";
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]">): Promis
   );
 }
 
-const groupIcon: Record<string, typeof IconBuilding> = { building: IconBuilding, civil: IconRoad, facilities: IconBroom, ict: IconChip };
+const groupIcon: Record<string, typeof IconBuilding> = { building: IconBuilding, civil: IconRoad, facilities: IconBroom, ict: IconChip, manpower: IconUsers };
 
 export default async function Home({ params }: PageProps<"/[lang]">) {
   const { lang } = (await params) as { lang: Lang };
@@ -168,7 +169,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             const Icon = groupIcon[g.key];
             const list = services.filter((s) => s.groupKey === g.key);
             return (
-              <Link key={g.key} href={href(lang, `/services#${g.key}`)} className="group card grid overflow-hidden sm:grid-cols-[200px_1fr]">
+              <Link key={g.key} href={href(lang, `/services#${g.key}`)} className="group card grid overflow-hidden sm:grid-cols-[200px_1fr] md:last:odd:col-span-2">
                 <Photo src={g.image} alt="" lang={lang} actual={false} className="min-h-[180px] rounded-none" sizes="(max-width: 640px) 100vw, 200px" />
                 <div className="p-6">
                   <Icon className="text-gold-strong" />
@@ -185,6 +186,9 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
       </Section>
 
+      {/* 4b. Manpower supply */}
+      <ManpowerSection lang={lang} />
+
       {/* 5. Industries served */}
       <Section tone="dark">
         <Heading eyebrow={d.home.industriesEyebrow} title={d.home.industriesTitle} dark />
@@ -199,6 +203,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <Link href={href(lang, "/solutions/pemilik-rumah")} className="btn border border-white/25 text-white hover:bg-white/10">{ms ? "Untuk pemilik rumah" : "For homeowners"}</Link>
           <Link href={href(lang, "/solutions/korporat")} className="btn border border-white/25 text-white hover:bg-white/10">{ms ? "Untuk korporat" : "For corporates"}</Link>
           <Link href={href(lang, "/solutions/sivil-infrastruktur")} className="btn border border-white/25 text-white hover:bg-white/10">{ms ? "Sivil & infrastruktur" : "Civil & infrastructure"}</Link>
+          <Link href={href(lang, "/solutions/bekalan-tenaga-kerja")} className="btn border border-white/25 text-white hover:bg-white/10">{ms ? "Bekalan tenaga kerja" : "Manpower supply"}</Link>
         </div>
       </Section>
 

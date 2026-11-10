@@ -7,7 +7,9 @@ import { pageMeta } from "@/lib/seo";
 import { getServices } from "@/lib/data/public";
 import { PageHero, Section } from "@/components/site/ui";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
-import { IconCheck, IconSpark } from "@/components/site/icons";
+import { IconCheck, IconSpark, IconWhatsApp } from "@/components/site/icons";
+import { ManpowerDetails } from "@/components/site/Manpower";
+import { COMPANY, waLink } from "@/lib/company";
 
 export const dynamic = "force-dynamic";
 
@@ -29,6 +31,7 @@ export default async function Solution({ params }: PageProps<"/[lang]/solutions/
   const d = t(lang);
   const ms = lang === "ms";
   const services = (await getServices()).filter((x) => s.groups.includes(x.groupKey));
+  const manpower = s.groups.includes("manpower");
   return (
     <>
       <PageHero lang={lang} eyebrow={ms ? "Penyelesaian" : "Solutions"} title={s.title[lang]} lead={s.lead[lang]} image={s.image} actual={false} />
@@ -42,7 +45,11 @@ export default async function Solution({ params }: PageProps<"/[lang]/solutions/
               ))}
             </ul>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href={`${href(lang, "/quotation")}?category=${s.quote}`} className="btn-gold"><IconSpark /> {d.cta.instantEstimate}</Link>
+              {manpower ? (
+                <a href={waLink(ms ? "Assalamualaikum, saya perlukan bekalan tenaga kerja." : "Hello, I need manpower supply.")} target="_blank" rel="noopener" className="btn-wa"><IconWhatsApp /> {COMPANY.phoneDisplay}</a>
+              ) : (
+                <Link href={`${href(lang, "/quotation")}?category=${s.quote}`} className="btn-gold"><IconSpark /> {d.cta.instantEstimate}</Link>
+              )}
             </div>
             <h3 className="mt-12 font-bold">{ms ? "Servis berkaitan" : "Related services"}</h3>
             <div className="mt-4 flex flex-wrap gap-2">
@@ -57,6 +64,7 @@ export default async function Solution({ params }: PageProps<"/[lang]/solutions/
           </div>
         </div>
       </Section>
+      {manpower && <ManpowerDetails lang={lang} />}
     </>
   );
 }

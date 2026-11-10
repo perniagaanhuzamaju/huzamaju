@@ -43,6 +43,7 @@ export function Footer({ lang }: { lang: Lang }) {
           ["/solutions/pemilik-rumah", lang === "ms" ? "Pemilik rumah" : "Homeowners"],
           ["/solutions/korporat", lang === "ms" ? "Korporat" : "Corporate"],
           ["/solutions/sivil-infrastruktur", lang === "ms" ? "Sivil & infrastruktur" : "Civil & infrastructure"],
+          ["/solutions/bekalan-tenaga-kerja", lang === "ms" ? "Bekalan tenaga kerja" : "Manpower supply"],
           ["/quotation", d.nav.quotation],
           ["/partners", d.nav.partners],
         ])}
