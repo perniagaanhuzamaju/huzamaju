@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: PageProps<"/[lang]/capabilities">): Promise<Metadata> {
   const { lang } = (await params) as { lang: Lang };
   return pageMeta(lang, "/capabilities", lang === "ms" ? "Keupayaan: Pendaftaran, Jentera & Kaedah Kerja" : "Capabilities: Registration, Machinery & Methods",
-    lang === "ms" ? "Pendaftaran CIDB G2 (B, CE, ME), JCCD, MOF, jentera sendiri dan kaedah kerja HUZA MAJU." : "HUZA MAJU's CIDB G2 (B, CE, ME), JCCD and MOF registration, own machinery and work methods.");
+    lang === "ms" ? "Pendaftaran CIDB (B, CE, ME), JCCD, MOF, jentera sendiri dan kaedah kerja HUZA MAJU." : "HUZA MAJU's CIDB (B, CE, ME), JCCD and MOF registration, own machinery and work methods.");
 }
 
 export default async function Capabilities({ params }: PageProps<"/[lang]/capabilities">) {
@@ -19,9 +19,9 @@ export default async function Capabilities({ params }: PageProps<"/[lang]/capabi
   const d = t(lang);
   const ms = lang === "ms";
   const grades = [
-    ["G2 B", ms ? "Pembinaan Bangunan" : "Building Construction", "B04 · B24"],
-    ["G2 CE", ms ? "Kejuruteraan Awam" : "Civil Engineering", "CE01 · CE06 · CE08 · CE21"],
-    ["G2 ME", ms ? "Mekanikal & Elektrikal" : "Mechanical & Electrical", "M15"],
+    ["CIDB B", ms ? "Pembinaan Bangunan" : "Building Construction", "B04 · B24"],
+    ["CIDB CE", ms ? "Kejuruteraan Awam" : "Civil Engineering", "CE01 · CE06 · CE08 · CE21"],
+    ["CIDB ME", ms ? "Mekanikal & Elektrikal" : "Mechanical & Electrical", "M15"],
   ];
   const regs = [
     ["CIDB", ms ? "Perakuan Pendaftaran Kontraktor (PPK)" : "Contractor Registration Certificate (PPK)", COMPANY.cidb],

@@ -572,8 +572,8 @@ export const SOLUTIONS: { slug: string; title: L; lead: L; points: { ms: string[
     title: { ms: "Perkhidmatan Pembinaan Korporat", en: "Corporate Construction Services" },
     lead: { ms: "Rakan kontraktor untuk syarikat, pemaju, kilang dan kontraktor utama.", en: "A contracting partner for companies, developers, factories and main contractors." },
     points: {
-      ms: ["Berdaftar CIDB G2 (B, CE, ME), JCCD & MOF", "Jentera dan lori sendiri", "Pengalaman sebagai kontraktor & subkontraktor", "Dokumen tender & method statement disediakan"],
-      en: ["Registered with CIDB G2 (B, CE, ME), JCCD & MOF", "Own machinery and lorries", "Experience as contractor & subcontractor", "Tender documents & method statements prepared"],
+      ms: ["Berdaftar CIDB (B, CE, ME), JCCD & MOF", "Jentera dan lori sendiri", "Pengalaman sebagai kontraktor & subkontraktor", "Dokumen tender & method statement disediakan"],
+      en: ["Registered with CIDB (B, CE, ME), JCCD & MOF", "Own machinery and lorries", "Experience as contractor & subcontractor", "Tender documents & method statements prepared"],
     },
     groups: ["building", "civil", "facilities"],
     quote: "commercial_renovation",

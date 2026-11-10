@@ -116,7 +116,7 @@ export function HeroVisual({ lang }: { lang: Lang }) {
         <p className="hv-v">{ms ? "Skop → Kuantiti → Harga" : "Scope → Quantity → Price"}</p>
       </div>
       <div className="hv-card absolute bottom-[16%] left-[0%]" style={{ animationDelay: "1.2s" }}>
-        <p className="hv-k">CIDB G2</p>
+        <p className="hv-k">{ms ? "Berdaftar CIDB" : "CIDB registered"}</p>
         <p className="hv-v">B · CE · ME</p>
       </div>
       <div className="hv-card absolute right-[4%] bottom-[4%]" style={{ animationDelay: "2.4s" }}>

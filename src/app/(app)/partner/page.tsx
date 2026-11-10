@@ -13,7 +13,7 @@ export default async function PartnerHome() {
   if (!partner) return <NoPartner />;
   const [s, leads] = await Promise.all([partnerStats(partner.id), partnerLeads(partner.id)]);
   const link = `${SITE_URL}/r/${partner.code}`;
-  const share = `Nak bina rumah, renovate atau buat kerja sivil? Dapatkan anggaran segera dari HUZA MAJU (kontraktor CIDB G2, Kluang): ${link}`;
+  const share = `Nak bina rumah, renovate atau buat kerja sivil? Dapatkan anggaran segera dari HUZA MAJU (kontraktor berdaftar CIDB, Kluang): ${link}`;
   return (
     <>
       <PageTitle title={`Hai, ${user.name}`} lead={`${partner.type === "agent" ? "Ejen Jualan Bebas" : "Rakan Rujukan"} · ID ${partner.code}`} />

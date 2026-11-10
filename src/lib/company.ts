@@ -9,7 +9,7 @@ export const COMPANY = {
   },
   ssm: "201803002916 (JM0840444-M)",
   cidb: "0120181127-JH020071",
-  cidbGrades: "G2 (B, CE, ME)",
+  cidbGrades: "B, CE, ME",
   jccd: "JCCD/SKJ/20/02/02390",
   mof: "357-0002367958",
   founded: "2018-01-03",

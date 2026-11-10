@@ -37,7 +37,7 @@ export default async function About({ params }: PageProps<"/[lang]/about">) {
   const blocks: [string, string][] = ms
     ? [
         ["Falsafah perniagaan", "Kepercayaan pelanggan dibina di tapak, bukan di atas kertas. Kami memilih kerja yang kami mampu siapkan dengan baik, dan bercakap benar tentang kos serta masa."],
-        ["Keupayaan teknikal", "Kerja bangunan (B04, B24), kejuruteraan awam (CE01, CE06, CE08, CE21) dan M&E (M15) di bawah pendaftaran CIDB G2, disokong jentera sendiri: 3 excavator, 5 backhoe dan 2 lori."],
+        ["Keupayaan teknikal", "Kerja bangunan (B04, B24), kejuruteraan awam (CE01, CE06, CE08, CE21) dan M&E (M15) di bawah pendaftaran CIDB, disokong jentera sendiri: 3 excavator, 5 backhoe dan 2 lori."],
         ["Keupayaan tenaga kerja", "Struktur organisasi ringkas dengan bahagian kewangan, pentadbiran & HR dan teknikal (jurutera, juruukur bahan & penyelia tapak), dibantu tukang mahir dan subkontraktor tempatan yang dipercayai."],
         ["Pendekatan pengurusan projek", "Skop, harga, jadual bayaran dan tempoh siap dipersetujui secara bertulis. Penyelia berada di tapak, progres dilaporkan bersama gambar, dan sebarang perubahan dipersetujui sebelum dilaksanakan."],
         ["Jaminan kualiti", "Kawalan bahan, pemeriksaan kemasan harian, pemeriksaan bersama sebelum serahan dan pembaikan senarai kecacatan."],
@@ -47,7 +47,7 @@ export default async function About({ params }: PageProps<"/[lang]/about">) {
       ]
     : [
         ["Business philosophy", "Client trust is built on site, not on paper. We take on work we can deliver well, and we are honest about cost and time."],
-        ["Technical capabilities", "Building (B04, B24), civil engineering (CE01, CE06, CE08, CE21) and M&E (M15) works under CIDB G2 registration, supported by our own machinery: 3 excavators, 5 backhoes and 2 lorries."],
+        ["Technical capabilities", "Building (B04, B24), civil engineering (CE01, CE06, CE08, CE21) and M&E (M15) works under CIDB registration, supported by our own machinery: 3 excavators, 5 backhoes and 2 lorries."],
         ["Workforce capabilities", "A lean organisation with finance, administration & HR and technical divisions (engineer, quantity surveyor & site supervisors), supported by skilled tradesmen and trusted local subcontractors."],
         ["Project management approach", "Scope, price, payment schedule and completion are agreed in writing. A supervisor is on site, progress is reported with photos, and any change is agreed before it is carried out."],
         ["Quality assurance", "Material control, daily finish checks, joint inspection before handover and defect rectification."],

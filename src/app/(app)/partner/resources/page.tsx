@@ -15,9 +15,9 @@ export default async function PartnerResources() {
   const agent = user.permissions.has("partner.agent_tools");
   const r = (path: string) => `${SITE_URL}/r/${partner.code}?to=${encodeURIComponent(path)}`;
   const templates = [
-    ["Umum", `Assalamualaikum. Saya rakan kepada HUZA MAJU, kontraktor CIDB G2 di Kluang, Johor. Mereka buat bina rumah, renovation, bumbung, paip, elektrik dan kerja sivil. Boleh dapatkan anggaran awal segera di sini: ${r("/quotation")}`],
+    ["Umum", `Assalamualaikum. Saya rakan kepada HUZA MAJU, kontraktor berdaftar CIDB di Kluang, Johor. Mereka buat bina rumah, renovation, bumbung, paip, elektrik dan kerja sivil. Boleh dapatkan anggaran awal segera di sini: ${r("/quotation")}`],
     ["Renovation rumah", `Nak renovate dapur, bilik air atau tambah bilik? HUZA MAJU boleh bagi anggaran bajet awal dalam beberapa minit, kemudian QS mereka sahkan selepas lawatan tapak: ${r("/quotation?category=house_renovation")}`],
-    ["Korporat / kilang", `Untuk penyelenggaraan bangunan, kerja sivil dan subkontrak, HUZA MAJU (CIDB G2 B, CE, ME) menerima projek kerajaan dan swasta. Profil syarikat: ${r("/about")}`],
+    ["Korporat / kilang", `Untuk penyelenggaraan bangunan, kerja sivil dan subkontrak, HUZA MAJU (berdaftar CIDB: B, CE, ME) menerima projek kerajaan dan swasta. Profil syarikat: ${r("/about")}`],
   ];
   return (
     <>

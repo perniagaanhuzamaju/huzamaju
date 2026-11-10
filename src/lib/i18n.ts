@@ -37,7 +37,7 @@ const ms = {
   hero: {
     eyebrow: "Kontraktor Binaan, Sivil & Penyelesaian Bersepadu · Kluang, Johor",
     title: "Membina Penyelesaian. Mencipta Peluang.",
-    text: "Satu kontraktor untuk bangunan, jalan dan saliran, penyelenggaraan fasiliti serta ICT. Berdaftar CIDB G2 dan beroperasi dari Kluang sejak 2018, kami mengurus projek anda dari sebut harga hingga serah kunci, dengan kos yang telus dan laporan progres yang jelas.",
+    text: "Satu kontraktor untuk bangunan, jalan dan saliran, penyelenggaraan fasiliti serta ICT. Berdaftar dengan CIDB dan beroperasi dari Kluang sejak 2018, kami mengurus projek anda dari sebut harga hingga serah kunci, dengan kos yang telus dan laporan progres yang jelas.",
   },
   home: {
     introEyebrow: "Pengenalan Syarikat",
@@ -122,7 +122,7 @@ const en: Dict = {
   hero: {
     eyebrow: "Construction, Civil & Integrated Solutions · Kluang, Johor",
     title: "Building Solutions. Creating Opportunities.",
-    text: "One contractor for buildings, roads and drainage, facilities maintenance and ICT. CIDB G2 registered and operating from Kluang since 2018, we manage your project from quotation to handover, with transparent costs and clear progress reports.",
+    text: "One contractor for buildings, roads and drainage, facilities maintenance and ICT. CIDB registered and operating from Kluang since 2018, we manage your project from quotation to handover, with transparent costs and clear progress reports.",
   },
   home: {
     introEyebrow: "Company Introduction",

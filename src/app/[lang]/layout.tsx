@@ -27,8 +27,8 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
       template: "%s | HUZA MAJU",
     },
     description: ms
-      ? "PERNIAGAAN HUZA MAJU: kontraktor Bumiputera CIDB G2 (B, CE, ME) di Kluang, Johor. Pembinaan, renovation, jalan raya, saliran, penyelenggaraan, pembersihan & ICT."
-      : "PERNIAGAAN HUZA MAJU: CIDB G2 (B, CE, ME) Bumiputera contractor in Kluang, Johor. Construction, renovation, roads, drainage, maintenance, cleaning & ICT.",
+      ? "PERNIAGAAN HUZA MAJU: kontraktor Bumiputera berdaftar CIDB (B, CE, ME) di Kluang, Johor. Pembinaan, renovation, jalan raya, saliran, penyelenggaraan, pembersihan & ICT."
+      : "PERNIAGAAN HUZA MAJU: CIDB-registered (B, CE, ME) Bumiputera contractor in Kluang, Johor. Construction, renovation, roads, drainage, maintenance, cleaning & ICT.",
     icons: { icon: "/img/favicon.png", apple: "/img/apple-touch-icon.png" },
     verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
     applicationName: COMPANY.shortName,

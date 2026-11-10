@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: PageProps<"/[lang]">): Promis
     "/",
     lang === "ms" ? "HUZA MAJU | Kontraktor Binaan, Renovation & Sivil Kluang, Johor" : "HUZA MAJU | Construction & Civil Contractor in Johor",
     lang === "ms"
-      ? "Kontraktor Kluang & Johor: pembinaan, renovation rumah dan komersial, jalan raya, saliran, penyelenggaraan, pembersihan dan ICT. CIDB G2. Sebut harga AI segera."
-      : "Construction company in Johor: building, residential and commercial renovation, roads, drainage, maintenance, cleaning and ICT. CIDB G2. Instant AI estimates.",
+      ? "Kontraktor Kluang & Johor: pembinaan, renovation rumah dan komersial, jalan raya, saliran, penyelenggaraan, pembersihan dan ICT. Berdaftar CIDB. Sebut harga AI segera."
+      : "Construction company in Johor: building, residential and commercial renovation, roads, drainage, maintenance, cleaning and ICT. CIDB registered. Instant AI estimates.",
   );
 }
 
@@ -51,7 +51,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
     .slice(0, 4);
 
   const capabilities = [
-    [IconShield, ms ? "CIDB G2 · B, CE, ME" : "CIDB G2 · B, CE, ME", ms ? "Bangunan, Kejuruteraan Awam dan Mekanikal & Elektrikal. SPKK, STB, JCCD & MOF." : "Building, Civil Engineering and M&E. SPKK, STB, JCCD & MOF registered."],
+    [IconShield, ms ? "Berdaftar CIDB · B, CE, ME" : "CIDB registered · B, CE, ME", ms ? "Bangunan, Kejuruteraan Awam dan Mekanikal & Elektrikal. SPKK, STB, JCCD & MOF." : "Building, Civil Engineering and M&E. SPKK, STB, JCCD & MOF registered."],
     [IconTruck, ms ? "Jentera sendiri" : "Own machinery", ms ? "Excavator, backhoe dan lori sedia digerakkan ke tapak." : "Excavators, backhoes and lorries ready to mobilise."],
     [IconUsers, ms ? "Pasukan teknikal" : "Technical team", ms ? "Penyelia tapak, jurutera dan juruukur bahan dalam satu pasukan." : "Site supervisors, engineer and quantity surveyor in one team."],
     [IconDoc, ms ? "Dokumen lengkap" : "Complete documentation", ms ? "BQ, method statement dan dokumen tender disediakan." : "BQs, method statements and tender documents prepared."],
