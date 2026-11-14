@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { href, t, type Lang } from "@/lib/i18n";
 import { SERVICE_GROUPS, quoteCategory } from "@/lib/catalog";
-import { pageMeta, SITE_URL } from "@/lib/seo";
+import { pageMeta, SITE_URL, breadcrumbJsonLd, ldScript } from "@/lib/seo";
 import { waLink, COMPANY } from "@/lib/company";
 import { getPortfolio, getService, getServices } from "@/lib/data/public";
 import { ProjectCover } from "@/components/site/ProjectCover";
@@ -50,7 +50,7 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
     name: title,
     description: ms ? s.summaryMs : s.summaryEn,
     provider: { "@id": `${SITE_URL}/#org` },
-    areaServed: "Malaysia",
+    areaServed: [{ "@type": "State", name: "Johor" }, { "@type": "Country", name: "Malaysia" }],
     url: `${SITE_URL}${href(lang, `/services/${s.slug}`)}`,
   };
   return (
@@ -125,7 +125,8 @@ export default async function ServicePage({ params }: PageProps<"/[lang]/service
           </div>
         </Section>
       )}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={ldScript(jsonLd)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={ldScript(breadcrumbJsonLd(lang, [[d.nav.services, "/services"], [title, `/services/${s.slug}`]]))} />
     </>
   );
 }

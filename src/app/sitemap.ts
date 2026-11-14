@@ -7,16 +7,20 @@ import { SITE_URL } from "@/lib/seo";
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [services, projects, postsMs, postsEn] = await Promise.all([getServices(), getPortfolio(), getPosts("ms"), getPosts("en")]);
+  // A database hiccup should not take the whole sitemap down: fall back to the fixed pages.
+  const safe = <T>(p: Promise<T[]>) => p.catch(() => [] as T[]);
+  const [services, projects, postsMs, postsEn] = await Promise.all([safe(getServices()), safe(getPortfolio()), safe(getPosts("ms")), safe(getPosts("en"))]);
   const paths = [
     "/", "/about", "/services", "/projects", "/capabilities", "/quotation", "/partners", "/partners/register", "/contact", "/blog", "/privacy", "/terms",
     ...SOLUTIONS.map((s) => `/solutions/${s.slug}`),
     ...services.map((s) => `/services/${s.slug}`),
     ...projects.map((p) => `/projects/${p.slug}`),
   ];
+  const now = new Date();
   const entry = (p: string) => ({
     url: `${SITE_URL}${href("ms", p)}`,
     alternates: { languages: { ms: `${SITE_URL}${href("ms", p)}`, en: `${SITE_URL}${href("en", p)}` } },
+    lastModified: now,
     changeFrequency: "weekly" as const,
     priority: p === "/" ? 1 : p.split("/").length > 2 ? 0.6 : 0.8,
   });

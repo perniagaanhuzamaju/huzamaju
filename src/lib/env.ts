@@ -51,6 +51,8 @@ const schema = z.object({
   NEXT_PUBLIC_TURNSTILE_SITE_KEY: z.string().optional(),
   NEXT_PUBLIC_GA_ID: z.string().optional(),
   GOOGLE_SITE_VERIFICATION: z.string().optional(),
+  BING_SITE_VERIFICATION: z.string().optional(),
+  SOCIAL_LINKS: z.string().optional(),
 });
 
 export type Env = z.infer<typeof schema>;

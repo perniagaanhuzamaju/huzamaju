@@ -110,7 +110,9 @@ Pautan `wa.me/60178717848` berfungsi tanpa konfigurasi. Notifikasi automatik kep
 
 ## 12. Google
 
-1. Search Console: tambah harta `https://huzamaju.my`, pilih pengesahan tag HTML, letak kod dalam `GOOGLE_SITE_VERIFICATION`, kemudian hantar `https://huzamaju.my/sitemap.xml`.
+1. Search Console: tambah harta `https://huzamaju.my`, pilih pengesahan tag HTML, letak kod dalam `GOOGLE_SITE_VERIFICATION`, kemudian hantar `https://huzamaju.my/sitemap.xml`. (Atau guna harta jenis Domain dengan rekod TXT di DNS Exabytes.)
+   Bing Webmaster Tools: boleh import terus dari Search Console, atau letak kod `msvalidate.01` dalam `BING_SITE_VERIFICATION`.
+   Pautan Facebook/TikTok rasmi: letak dalam `SOCIAL_LINKS` (dipisah koma) supaya Google kaitkan dengan syarikat.
 2. Analytics: cipta harta GA4, letak ID `G-XXXX` dalam `NEXT_PUBLIC_GA_ID`.
 3. Google Business Profile: daftar alamat Kluang dengan nombor 017-871 7848.
 

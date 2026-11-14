@@ -7,7 +7,7 @@ import { Header } from "@/components/site/Header";
 import { Footer, WhatsAppFloat } from "@/components/site/Footer";
 import { isLang, LANGS } from "@/lib/i18n";
 import { COMPANY } from "@/lib/company";
-import { orgJsonLd, SITE_URL } from "@/lib/seo";
+import { ldScript, orgJsonLd, SITE_URL, websiteJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return LANGS.map((lang) => ({ lang }));
@@ -22,15 +22,18 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
     metadataBase: new URL(SITE_URL),
     title: {
       default: ms
-        ? "HUZA MAJU | Kontraktor Binaan, Renovation & Sivil Seluruh Malaysia"
-        : "HUZA MAJU | Construction, Renovation & Civil Contractor in Malaysia",
+        ? "Kontraktor Binaan & Renovation di Kluang, Johor | HUZA MAJU"
+        : "Construction & Renovation Contractor in Kluang, Johor | HUZA MAJU",
       template: "%s | HUZA MAJU",
     },
     description: ms
       ? "PERNIAGAAN HUZA MAJU: kontraktor Bumiputera berdaftar CIDB (B, CE, ME) di Kluang, Johor, berkhidmat di seluruh Malaysia. Pembinaan, renovation, jalan raya, saliran, penyelenggaraan, pembersihan & ICT."
       : "PERNIAGAAN HUZA MAJU: CIDB-registered (B, CE, ME) Bumiputera contractor in Kluang, Johor, serving all of Malaysia. Construction, renovation, roads, drainage, maintenance, cleaning & ICT.",
     icons: { icon: "/img/favicon.png", apple: "/img/apple-touch-icon.png" },
-    verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
+    verification: {
+      ...(process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : {}),
+      ...(process.env.BING_SITE_VERIFICATION ? { other: { "msvalidate.01": process.env.BING_SITE_VERIFICATION } } : {}),
+    },
     applicationName: COMPANY.shortName,
   };
 }
@@ -51,7 +54,8 @@ export default async function SiteLayout({ children, params }: LayoutProps<"/[la
         </main>
         <Footer lang={lang} />
         <WhatsAppFloat lang={lang} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd()).replace(/</g, "\\u003c") }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={ldScript(orgJsonLd())} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={ldScript(websiteJsonLd(lang))} />
         {ga && (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${ga}`} strategy="afterInteractive" />

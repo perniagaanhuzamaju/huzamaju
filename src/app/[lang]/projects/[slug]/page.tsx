@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { href, t, type Lang } from "@/lib/i18n";
 import { PROJECT_CATEGORIES } from "@/lib/catalog";
-import { pageMeta } from "@/lib/seo";
+import { breadcrumbJsonLd, ldScript, pageMeta } from "@/lib/seo";
 import { getPortfolioProject } from "@/lib/data/public";
 import { PageHero, Section } from "@/components/site/ui";
 
@@ -79,6 +79,7 @@ export default async function ProjectPage({ params }: PageProps<"/[lang]/project
           </div>
         </div>
       </Section>
+      <script type="application/ld+json" dangerouslySetInnerHTML={ldScript(breadcrumbJsonLd(lang, [[d.nav.projects, "/projects"], [ms ? p.titleMs : p.titleEn, `/projects/${p.slug}`]]))} />
     </>
   );
 }

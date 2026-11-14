@@ -20,14 +20,20 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]">): Promise<Metadata> {
   const { lang } = (await params) as { lang: Lang };
-  return pageMeta(
+  const title =
+    lang === "ms"
+      ? "Kontraktor Binaan & Renovation Kluang, Johor | HUZA MAJU"
+      : "Construction & Renovation Contractor in Kluang, Johor | HUZA MAJU";
+  const meta = pageMeta(
     lang,
     "/",
-    lang === "ms" ? "HUZA MAJU | Kontraktor Binaan, Renovation & Sivil Seluruh Malaysia" : "HUZA MAJU | Construction & Civil Contractor in Malaysia",
+    title,
     lang === "ms"
-      ? "Kontraktor dari Kluang untuk seluruh Malaysia: pembinaan, renovation rumah dan komersial, jalan raya, saliran, penyelenggaraan, pembersihan dan ICT. Berdaftar CIDB. Sebut harga AI segera."
-      : "Construction company serving all of Malaysia: building, residential and commercial renovation, roads, drainage, maintenance, cleaning and ICT. CIDB registered. Instant AI estimates.",
+      ? "Kontraktor berdaftar CIDB dari Kluang, Johor untuk renovation rumah, pembinaan, jalan raya, saliran dan penyelenggaraan di seluruh Malaysia. Lawatan tapak percuma. WhatsApp 017-871 7848."
+      : "CIDB-registered contractor from Kluang, Johor for home renovation, construction, roads, drainage and maintenance across Malaysia. Free site visits. WhatsApp 017-871 7848.",
   );
+  // "absolute" stops the layout template from adding "| HUZA MAJU" a second time.
+  return { ...meta, title: { absolute: title } };
 }
 
 const groupIcon: Record<string, typeof IconBuilding> = { building: IconBuilding, civil: IconRoad, facilities: IconBroom, ict: IconChip, manpower: IconUsers };

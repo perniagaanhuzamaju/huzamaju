@@ -6,6 +6,9 @@ import { href, type Lang } from "./i18n";
 const envUrl = process.env.APP_URL?.replace(/\/$/, "");
 export const SITE_URL = envUrl && !/\.vercel\.app$/.test(envUrl) ? envUrl : `https://${COMPANY.domain}`;
 
+/** Official social pages (comma-separated SOCIAL_LINKS env, e.g. the Facebook page). Linked from the Organization data so Google ties them to this site. */
+const SAME_AS = (process.env.SOCIAL_LINKS ?? "").split(",").map((x) => x.trim()).filter((x) => /^https:\/\//.test(x));
+
 export function pageMeta(lang: Lang, path: string, title: string, description: string, image = "/img/og.jpg"): Metadata {
   const url = `${SITE_URL}${href(lang, path)}`;
   return {
@@ -50,8 +53,39 @@ export function orgJsonLd() {
       addressRegion: COMPANY.state,
       addressCountry: "MY",
     },
-    areaServed: [{ "@type": "Country", name: "Malaysia" }],
+    areaServed: [
+      { "@type": "City", name: "Kluang" },
+      { "@type": "State", name: "Johor" },
+      { "@type": "Country", name: "Malaysia" },
+    ],
+    contactPoint: [{ "@type": "ContactPoint", telephone: COMPANY.phoneIntl, contactType: "customer service", areaServed: "MY", availableLanguage: ["ms", "en"] }],
+    ...(SAME_AS.length ? { sameAs: SAME_AS } : {}),
     founder: { "@type": "Person", name: COMPANY.owner },
     knowsAbout: ["Building construction", "Renovation", "Civil engineering", "Road works", "Drainage", "Earthworks", "Facilities maintenance", "Cleaning", "ICT", "Design and build"],
   };
 }
+
+export function websiteJsonLd(lang: Lang) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    url: SITE_URL,
+    name: COMPANY.shortName,
+    alternateName: COMPANY.name,
+    inLanguage: lang === "ms" ? "ms-MY" : "en-MY",
+    publisher: { "@id": `${SITE_URL}/#org` },
+  };
+}
+
+/** Breadcrumb trail for a page; each crumb is [name, path]. Home is added first. */
+export function breadcrumbJsonLd(lang: Lang, crumbs: [string, string][]) {
+  const all: [string, string][] = [[lang === "ms" ? "Utama" : "Home", "/"], ...crumbs];
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: all.map(([name, path], i) => ({ "@type": "ListItem", position: i + 1, name, item: `${SITE_URL}${href(lang, path)}` })),
+  };
+}
+
+export const ldScript = (data: unknown) => ({ __html: JSON.stringify(data).replace(/</g, "\\u003c") });
