@@ -21,7 +21,7 @@ export default async function QuotationLink({ params }: PageProps<"/q/[token]">)
   const ms = view.lang === "ms";
   return (
     <>
-      <TopBar home={ms ? "/" : "/en"}>
+      <TopBar home={ms ? "/ms" : "/"}>
         <a href={waLink(`${view.number}`)} target="_blank" rel="noopener" className="btn btn-wa btn-sm">
           WhatsApp {COMPANY.phoneDisplay}
         </a>
@@ -29,7 +29,7 @@ export default async function QuotationLink({ params }: PageProps<"/q/[token]">)
       <main className="mx-auto max-w-5xl px-4 py-8 md:px-6 md:py-12">
         <QuotationResult initial={view} showSteps={false} />
         <p className="mt-8 text-center text-sm text-mute">
-          <Link href={ms ? "/quotation" : "/en/quotation"} className="underline">
+          <Link href={ms ? "/ms/quotation" : "/quotation"} className="underline">
             {ms ? "Buat anggaran baharu" : "Start a new estimate"}
           </Link>
         </p>

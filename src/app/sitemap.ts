@@ -18,7 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
   const now = new Date();
   const entry = (p: string) => ({
-    url: `${SITE_URL}${href("ms", p)}`,
+    url: `${SITE_URL}${href("en", p)}`,
     alternates: { languages: { ms: `${SITE_URL}${href("ms", p)}`, en: `${SITE_URL}${href("en", p)}` } },
     lastModified: now,
     changeFrequency: "weekly" as const,
@@ -26,7 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
   return [
     ...paths.map(entry),
-    ...postsMs.map((p) => ({ url: `${SITE_URL}/blog/${p.slug}`, lastModified: p.updatedAt })),
-    ...postsEn.map((p) => ({ url: `${SITE_URL}/en/blog/${p.slug}`, lastModified: p.updatedAt })),
+    ...postsMs.map((p) => ({ url: `${SITE_URL}/ms/blog/${p.slug}`, lastModified: p.updatedAt })),
+    ...postsEn.map((p) => ({ url: `${SITE_URL}/blog/${p.slug}`, lastModified: p.updatedAt })),
   ];
 }

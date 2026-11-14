@@ -16,7 +16,7 @@ export function pageMeta(lang: Lang, path: string, title: string, description: s
     description,
     alternates: {
       canonical: url,
-      languages: { ms: `${SITE_URL}${href("ms", path)}`, en: `${SITE_URL}${href("en", path)}`, "x-default": `${SITE_URL}${href("ms", path)}` },
+      languages: { ms: `${SITE_URL}${href("ms", path)}`, en: `${SITE_URL}${href("en", path)}`, "x-default": `${SITE_URL}${href("en", path)}` },
     },
     openGraph: {
       type: "website",

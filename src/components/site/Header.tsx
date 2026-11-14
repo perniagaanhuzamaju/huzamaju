@@ -22,7 +22,7 @@ export function Header({ lang }: { lang: Lang }) {
     return () => window.removeEventListener("scroll", on);
   }, []);
 
-  const bare = lang === "en" ? pathname.replace(/^\/en/, "") || "/" : pathname;
+  const bare = lang === "ms" ? pathname.replace(/^\/ms/, "") || "/" : pathname;
   const other: Lang = lang === "ms" ? "en" : "ms";
   const nav = [
     ["/", d.nav.home],

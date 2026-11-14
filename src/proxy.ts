@@ -1,9 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 /**
- * Locale routing: Bahasa Melayu is served at the root, English under /en.
+ * Locale routing: English is served at the root, Bahasa Melayu under /ms.
  * Internally every public page lives under app/[lang]/, so "/services" is
- * rewritten to "/ms/services". App areas (admin, portals, API) are untouched.
+ * rewritten to "/en/services". Old "/en/..." links redirect to the root. App areas (admin, portals, API) are untouched.
  * A "?ref=CODE" on any public URL is handed to /r/CODE for referral attribution.
  */
 const APP_PREFIXES = ["/api", "/admin", "/portal", "/partner", "/login", "/register", "/logout", "/r", "/q", "/_next", "/img", "/robots.txt", "/sitemap.xml"];
@@ -24,15 +24,15 @@ export function proxy(req: NextRequest) {
     return NextResponse.redirect(to);
   }
 
-  if (pathname === "/ms" || pathname.startsWith("/ms/")) {
+  if (pathname === "/en" || pathname.startsWith("/en/")) {
     const url = req.nextUrl.clone();
     url.pathname = pathname.slice(3) || "/";
     return NextResponse.redirect(url, 308);
   }
-  if (pathname === "/en" || pathname.startsWith("/en/")) return NextResponse.next();
+  if (pathname === "/ms" || pathname.startsWith("/ms/")) return NextResponse.next();
 
   const url = req.nextUrl.clone();
-  url.pathname = `/ms${pathname === "/" ? "" : pathname}`;
+  url.pathname = `/en${pathname === "/" ? "" : pathname}`;
   return NextResponse.rewrite(url);
 }
 

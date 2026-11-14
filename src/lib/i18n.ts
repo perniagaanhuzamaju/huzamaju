@@ -4,11 +4,11 @@ export type { Lang };
 export const LANGS: Lang[] = ["ms", "en"];
 export const isLang = (x: string): x is Lang => x === "ms" || x === "en";
 
-/** Builds a localised path: Malay lives at the root, English under /en. */
+/** Builds a localised path: English lives at the root, Malay under /ms. */
 export const href = (lang: Lang, path = "/") => {
   const p = path.startsWith("/") ? path : `/${path}`;
-  if (lang === "ms") return p;
-  return p === "/" ? "/en" : `/en${p}`;
+  if (lang === "en") return p;
+  return p === "/" ? "/ms" : `/ms${p}`;
 };
 
 const ms = {
