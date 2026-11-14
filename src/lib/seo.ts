@@ -7,7 +7,7 @@ const envUrl = process.env.APP_URL?.replace(/\/$/, "");
 export const SITE_URL = envUrl && !/\.vercel\.app$/.test(envUrl) ? envUrl : `https://${COMPANY.domain}`;
 
 /** Official social pages (comma-separated SOCIAL_LINKS env, e.g. the Facebook page). Linked from the Organization data so Google ties them to this site. */
-const SAME_AS = (process.env.SOCIAL_LINKS ?? "").split(",").map((x) => x.trim()).filter((x) => /^https:\/\//.test(x));
+const SAME_AS = [COMPANY.googleMaps, ...(process.env.SOCIAL_LINKS ?? "").split(",").map((x) => x.trim()).filter((x) => /^https:\/\//.test(x))];
 
 export function pageMeta(lang: Lang, path: string, title: string, description: string, image = "/img/og.jpg"): Metadata {
   const url = `${SITE_URL}${href(lang, path)}`;
@@ -43,6 +43,7 @@ export function orgJsonLd() {
     logo: `${SITE_URL}/img/logo.png`,
     image: `${SITE_URL}/img/og.jpg`,
     telephone: COMPANY.phoneIntl,
+    hasMap: COMPANY.googleMaps,
     email: COMPANY.email,
     foundingDate: COMPANY.founded,
     address: {

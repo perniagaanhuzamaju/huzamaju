@@ -20,7 +20,7 @@ export default async function Contact({ params }: PageProps<"/[lang]/contact">) 
   const d = t(lang);
   const ms = lang === "ms";
   const [services, c] = await Promise.all([getServices(), getContent(lang)]);
-  const map = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(COMPANY.address)}`;
+  const map = COMPANY.googleMaps;
   const rows = [
     [IconWhatsApp, "WhatsApp", COMPANY.phoneDisplay, waLink()],
     [IconPhone, ms ? "Telefon" : "Phone", COMPANY.phoneDisplay, `tel:${COMPANY.phoneIntl}`],

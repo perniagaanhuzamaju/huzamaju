@@ -23,6 +23,8 @@ export const COMPANY = {
   state: "Johor",
   postcode: "86000",
   domain: "huzamaju.my",
+  /** Google Business Profile (Google Maps) listing. */
+  googleMaps: "https://maps.app.goo.gl/6KFRykGNV5T2Enxt8",
   /** The company is not registered for SST (see dokumen/surat/Surat_Tidak_Berdaftar_SST). */
   sstRegistered: false,
 } as const;
