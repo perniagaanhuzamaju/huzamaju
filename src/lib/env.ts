@@ -8,7 +8,12 @@ import { z } from "zod";
 const schema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   DATABASE_URL: z.string().min(1, "DATABASE_URL is required"),
-  APP_URL: z.string().url().default("http://localhost:3000"),
+  // The old *.vercel.app address is replaced by the official domain, so links never point at it.
+  APP_URL: z
+    .string()
+    .url()
+    .default("http://localhost:3000")
+    .transform((u) => (/\.vercel\.app\/?$/.test(u) ? "https://huzamaju.my" : u.replace(/\/$/, ""))),
   SESSION_SECRET: z.string().min(32, "SESSION_SECRET must be at least 32 characters"),
   DATA_ENCRYPTION_KEY: z.string().optional(),
 

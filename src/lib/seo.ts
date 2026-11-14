@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { COMPANY } from "./company";
 import { href, type Lang } from "./i18n";
 
-export const SITE_URL = process.env.APP_URL || `https://${COMPANY.domain}`;
+/** Public address used in canonical links, sitemap and social cards. The old *.vercel.app address is never used. */
+const envUrl = process.env.APP_URL?.replace(/\/$/, "");
+export const SITE_URL = envUrl && !/\.vercel\.app$/.test(envUrl) ? envUrl : `https://${COMPANY.domain}`;
 
 export function pageMeta(lang: Lang, path: string, title: string, description: string, image = "/img/og.jpg"): Metadata {
   const url = `${SITE_URL}${href(lang, path)}`;
