@@ -58,7 +58,12 @@ export function Footer({ lang }: { lang: Lang }) {
             <li>
               <a href={`mailto:${COMPANY.email}`} className="hover:text-white">{COMPANY.email}</a>
             </li>
-            <li className="leading-relaxed">{COMPANY.address}</li>
+            <li className="leading-relaxed">
+              <a href={COMPANY.googleMaps} target="_blank" rel="noopener" className="hover:text-white">{COMPANY.address}</a>
+            </li>
+            <li>
+              <a href={COMPANY.facebook} target="_blank" rel="noopener me" className="hover:text-white">Facebook: HUZA MAJU</a>
+            </li>
           </ul>
         </div>
       </div>
